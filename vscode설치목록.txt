@@ -1,5 +1,15 @@
-설치목록
+---------- 확장 설치 목록
 open in brower : alt + b  -> 브라우저로 열기
 Quick HTML Previewer : ctrl+q s -> side로 미리보기
 htmltagwrap : Alt + W -> 태그를 넣을 문자를 블록 잡고 alt+w p태그 자동 생성
 Auto Rename Tag  -> 여는태그 혹은 닫는태그를 바꾸면 자동으로 바뀜
+
+---------- 유용한 단축키
+ctrl + q  s : html문서를 우측에서 미리보기
+ctrl+k o : 기존창에서 별도의 창으로 열기
+alt + shift + f : 코드 자동정렬
+alt + shift + a : /*  */ 주석
+alt + z (위치에 커서 놓고) : 태그안의 내용이 한줄로 긴것을 화면내에서 다 보이도록 여러줄로 내릴 때
+ctrl + alt + 위아래 방향키(키보드로 선택)   : 
+shift + alt + 마우스 드래그(마우스로 선택)  :   세로선택, 다중(멀티)선택 ( 글자를 블록잡고 단축키하면 블록이 세로로잡힘)
+Ctrl + Shift + H : 전체 프로젝트에서 바꾸기
