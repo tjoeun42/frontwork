@@ -1,0 +1,5 @@
+설치목록
+open in brower : alt + b  -> 브라우저로 열기
+Quick HTML Previewer : ctrl+q s -> side로 미리보기
+htmltagwrap : Alt + W -> 태그를 넣을 문자를 블록 잡고 alt+w p태그 자동 생성
+Auto Rename Tag  -> 여는태그 혹은 닫는태그를 바꾸면 자동으로 바뀜
