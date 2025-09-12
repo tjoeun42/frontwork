@@ -226,7 +226,79 @@
         submit : form에 모든 값들을 서버로 전송 &ensp;<input type="submit"><br>
         reset : form에 모든 값들을 초기화 &ensp;<input type="reset"><br>
         button : 일반 버튼 &ensp;<input type="button" value="일반버튼">
+        <br>
+
+        <h3>button[type="submit|reset|button"]</h3>
+        <button type="submit">제출</button><br> <!-- 기본값 -->
+        <button type="reset">초기화</button><br>
+        <button type="button">일반버튼</button><br>
+        <button>type을 생략하면 submit버튼</button><br>
+    </form>
+    <br><br>
+
+    <hr>
+
+    <h2>select태그와 option태그</h2>
+    <p>
+        - 사용자에게 직접 키보드로 입력받는것이 아니라 내가 제시한 여러개 옵션들 중 선택<br>
+        - 서버로 전송시 현재 선택된(selected) option값이 전송됨
+    </p>
+
+    <form actioin="test.do">
+        국적 :
+        <select name="national">
+            <option value="ko">한국</option>
+            <option value="us">미국</option>
+            <option value="eu">영국</option>
+            <option value="jp">일본</option>
+            <option value="etc">기타</option>
+        </select>
+        <br><br>
+
+        메뉴선택 :
+        <select name="menu" multiple>
+            <option value="김치찌개">김치찌개</option>
+            <option value="된장찌개">된장찌개</option>
+            <option value="랍스타">랍스타</option>
+            <option value="김밥">김밥</option>
+            <option value="햄버거">햄버거</option>
+            <option value="자장면">자장면</option>
+        </select>
+        <br><br>
+
+        수강신청 :
+        <select>
+            <optgroup label="공과대학">
+                <option value="archi">건축공학과</option>
+                <option value="mechanic">기계공학과</option>
+                <option value="indust">산업공학과</option>
+                <option value="elec">전기전자공학과</option>
+                <option value="computer">컴퓨터공학과</option>
+                <option value="chemical">화학공학과</option>
+            </optgroup>
+            <optgroup label="인문대학">
+                <option value="history">사학과</option>
+                <option value="lang">어문학과</option>
+                <option value="philo">철학과</option>
+            </optgroup>
+        </select>
+        <br><br>
+
+        <h3>html5에 새로 추가된 기능 datalist</h3>
+        <p>
+            - 내가 제시한 목록 중에서 선택할 수도 있고, 만약 목록에 없으면 직접 입력 가능 
+        </p>
+
+        가고 싶은 여행지 :
+        <input name="travel" list="travellist">
+        <datalist id="travellist">
+            <option>한국</option>
+            <option>미국</option>
+            <option>영국</option>
+        </datalist>
+        <br>
         
+        <input type="submit">
     </form>
     
 
