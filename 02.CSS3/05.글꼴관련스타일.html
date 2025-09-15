@@ -109,5 +109,37 @@
     <style>
         #fv { font-variant : small-caps; }
     </style>
+
+    <hr>
+
+    <h3>font-style : 텍스트 문구를 기울이고자 할 때 사용</h3>
+    <pre>
+        선택자 {
+            font-style: normal|italic|oblique;
+        }
+    </pre>
+
+    <p style="font-style: italic;">Lorem ipsum dolor sit amet, consectetur adipisicing.(필기체의 기울임꼴)</p>
+    <p style="font-style:oblique">Lorem ipsum dolor sit amet, consectetur adipisicing.(원래글자의 기울임꼴)</p>
+
+    <hr>
+
+    <h3>font : 모든 속성을 한번에 사용</h3>
+    <pre>
+        선택자 {
+            font: [font-style] [font-variant] [font-weight] [font-size|line-height] [font-family]
+            font: bold 16px "맑은고딕", sans-serif;
+        }
+    </pre>
+
+    <p id="fontAll">속성을 한꺼번에 적용</p>
+
+    <!---------------------- style ------------------------>
+    <style>
+        #fontAll { 
+            font: italic 1.5rem "맑은고딕", sans-serif;
+            color: red;
+        }
+    </style>
 </body>
 </html>

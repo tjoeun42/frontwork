@@ -1,0 +1,20 @@
+/* ======================== 1. color ==================== */
+#color {
+    color: red;
+    color: #808000;
+    color: rgb(40, 117, 118);
+    color: rgba(7, 171, 175, 0.5);
+    color: hsl(240, 100%, 50%);    /* h:색상값(0~360), s:채도(%), l:명도(%) */
+    color: hsla(240, 100%, 50%, 0.5); 
+}
+
+/* ======================== 2. text-decoratioin ==================== */
+#td1{text-decoration: underline;}
+#td2{ text-decoration: line-through;}
+#td3{ text-decoration: overline;}
+#td4{ text-decoration: none;}
+
+/* ======================== 3. text-transform ==================== */
+#tt1{ text-transform: uppercase;}
+#tt2{ text-transform: lowercase;}
+#tt3{ text-transform: capitalize;}
