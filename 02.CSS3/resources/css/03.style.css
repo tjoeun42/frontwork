@@ -1,0 +1,121 @@
+/* ======================== 1. 속성 선택자 ==================== */
+/* div 요소들 중 name속성값이 name1과 "일치"하는 요소 */
+div[name=name1] {
+    background-color: darkorange;
+}
+
+/* div 요소들 중 name속성값이 name1이 "포함"하는 요소(공백구분, 단어) */
+div[name~=name1] {
+    color:aqua;
+}
+
+/* div 요소들 중 name속성값이 na로 "시작"하는 요소 */
+div[name^=na] {
+    font-size: 20px;
+}
+
+/* div 요소들 중 class속성값이 ss로 "끝"하는 요소 */
+div[class$=ss] {
+    color:cadetblue;
+}
+
+/* div 요소들 중 class속성값이 i가 "포함"되어 있는 요소 */
+div[class*=i] {
+    background-color: yellow;
+    color: red;
+}
+
+/* 응용 : class속성값이 div-class인 요소들 중에서 name속성값이 name3이 포함되어 있는 요소 */
+.div-class[name~=name3] {
+    background-color: pink;
+}
+
+/* ================== 2. 자손 선택자 / 후손 선택자 ================ */
+/* a>b : a요소의 자손들 중에서 b요소만 선택 */
+#test1>* {
+    background-color: olive;
+}
+
+#test1>h4 {
+    background-color: coral;
+}
+
+#test1>ul>li {
+    background-color: cornflowerblue;
+}
+
+/* a b : a요소의 후손(모든 하위요소)들 중 b요소만 선택*/
+#test1 li {
+    color: red;
+}
+
+/* ======================== 3. 동위 선택자 ==================== */
+/*  a+b : a요소 뒤에 있는 b요소 "하나만" 선택  */
+#test2+div {background-color: yellow;}
+#test2+ul{background-color: aqua;} /* 선택 안됨(바로 뒤의 요소가 아니기 때문) */
+
+/*  a~b : a요소 뒤에 있는 b요소 "모두" 선택  */
+/* #test2~div {background-color: cadetblue;} */
+#test2~ul {background-color: burlywood;}
+
+/* ======================== 4. 반응 선택자 ==================== */
+.area {
+    background-color: beige;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+#active-test:active {
+    background-color: rgb(69, 22, 112);
+    color: white;
+}
+#hover-test:hover {
+    background-color: brown;
+    color: white;
+}
+
+#link:link {color:coral}
+#link:hover {color:green}
+#link:active {color:blueviolet }
+#link:visited {color:deepskyblue}
+
+/* ======================== 5. 상태 선택자 ==================== */
+input[type=checkbox]:checked {
+    width: 30px;
+    height: 30px;
+}
+input[type=checkbox]:checked+label {
+    font-size: 30px;
+}
+
+input[name^=user]:focus {
+    background-color: pink;
+}
+
+button:enabled {
+    background-color: rgb(186, 134, 234);
+}
+button:disabled {
+    background-color: darkgray;
+}
+
+/* ======================= 6. 일반 구조 선택자 =================== */
+#summer :first-child {background-color: lightgray;} /* id가 summer의 후손들 중 첫번째 후손*/
+/* #summer>:first-child {color:blueviolet;}  첫번째 자손이라고 해도 됨*/
+
+#summer :last-child {background-color: lightcoral;}
+/* #summer>:list-child {color:blueviolet;}  마지막 자손이라고 해도 됨*/
+
+#summer :nth-child(2) {background-color: lightcyan;} /* 1부터 시작 */
+#summer :nth-child(2n) {color:red}                  /* 짝수번째 */
+#summer :nth-child(2n+1) {color:rgb(11, 131, 178)}  /* 홀수번째 */
+
+/* ======================= 7. 형제 구조 선택자 =================== */
+#fall p:first-of-type {background-color: lightpink}
+#fall p:last-of-type{background-color: aquamarine;}
+#fall p:nth-of-type(2) {background-color: burlywood;}
+#fall p:nth-of-type(2n) {background-color: lightskyblue}
+#fall p:nth-last-of-type(2n+1) {color: red;}
+
+/* ======================= 8. 부정 선택자 ====================== */
+#winter :not(p:first-of-type) {color:hotpink;}

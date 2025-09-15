@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Dongle&family=Tagesschrift&display=swap" rel="stylesheet">
+    <title>글꼴 관련 스타일</title>
+</head>
+<body>
+    <h1>글꼴 관련 스타일 속성(font~ )</h1>
+    <h3>font-family : 글꼴을 지정할 때 사용</h3>
+    <pre>
+        선택자 { font-family:글꼴명; }
+    </pre>
+
+    <p id="ff1">글꼴테스트1</p>
+    <p id="ff2">글꼴테스트2</p>
+    <p id="ff3">글꼴테스트3</p>
+
+    <!---------------------- style ------------------------>
+    <style>
+        #ff1 {font-family: KCC-간판체;}
+        #ff2 {font-family: KCC-무럭무럭;}
+        #ff3 {font-family: 지원체, MD아롱체;}
+    </style>
+
+    <h3>font-family : 외부 웹 폰트 사용하는 방법</h3>
+    <p>
+        웹 폰트 제공 사이트
+        <a href="https://fonts.google.com/" target="_blank">구글 웹 폰트</a>
+    </p>
+    <p id="ff4">외부 글꼴 테스트</p>
+    <p id="ff5">Lorem ipsum dolor sit amet.</p>
+    <p id="ff6">Lorem ipsum dolor sit amet.</p>
+
+    <!---------------------- style ------------------------>
+    <style>
+        #ff4 {font-family: "Dongle", sans-serif;}
+        #ff5 {font-family: "Bitcount Grid Double", sans-serif;}
+        #ff6 {font-family: "Tagesschrift", sans-serif;}
+    </style>
+
+    <hr>
+
+    <h3>font-size : 글꼴의 크기를 변경할 때 사용</h3>
+    <pre>
+        선택자 { font-size : 크기(px|em|rem|%)}
+
+        * em : 부모 요소나 상속된 요소의 글꼴의 크기를 기준으로 크기 결정
+        * rem : 루트 요소의 글꼴 크기를 기준으로 크기를 결정
+        * % : 부모 요소의 글꼴 크기를 기준으로 크기를 결정, em과 유사
+          > 기본 글꼴의 크기 : 16px 
+    </pre>
+    <div id="test1">
+        <ul>
+            <li id="fs1">고정크기 px테스트</li>
+            <li id="fs2">가변크기 em테스트</li>
+            <li id="fs3">가변크기 rem테스트</li>
+            <li id="fs4">가변크기 %테스트</li>
+        </ul>
+    </div>
+
+    <!---------------------- style ------------------------>
+    <style>
+        #test1 {font-size: 25px;}
+        #fs1{font-size: 25px;}
+        #fs2{font-size: 1.5em;}
+        #fs3{font-size: 1.5rem;}
+        #fs4{font-size: 150%;}
+    </style>
+
+    <hr>
+
+    <h3>font-weight : 글꼴의 두께 지정</h3>
+    <pre>
+        선택자 {
+            font-weight:normal|bold|bolder|lighter|100|400|900;
+        }
+    </pre>
+
+    <ul>
+        <li>원래 두께</li>
+        <li id="fw1">굵은 글꼴로 변경</li>
+        <li id="fw2">원래 굵기보다 더 굵게</li>
+        <li id="fw3">원래 굵기보다 더 가늘게</li>
+    </ul>
+
+    <!---------------------- style ------------------------>
+    <style>
+        #fw1 { font-weight: bold;}  /* 700 */
+        #fw2 { font-weight: 900;}   /* bolder 상속 받은것을 기준으로 */
+        #fw3 { font-weight: 100;}
+    </style>
+
+    <hr>
+
+    <h3>font-variant : 영문 텍스트 문구를 작은 대문자로 변경할 때 사용</h3>
+    <pre>
+        선택자 { font-variant : small-caps; }
+    </pre>
+
+    <span>I LOVE YOU</span><br>
+    <span>i love you</span>&emsp;
+    <span id="fv">i love you</span>
+
+    <!---------------------- style ------------------------>
+    <style>
+        #fv { font-variant : small-caps; }
+    </style>
+</body>
+</html>
