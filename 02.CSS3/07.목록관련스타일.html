@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>목록 관련 스타일</title>
+    <style>
+        #ul1 {
+            list-style-type: disc;  /* 기본값 생략 가능 */
+            list-style-type: circle;
+            list-style-type: square;
+            list-style-type: none;
+            list-style-image: url(resources/img/icon-removebg.png);
+        }
+        #ol1 {
+            list-style-type: decimal-leading-zero;
+            list-style-type: upper-alpha;
+            list-style-type: upper-roman;
+            list-style-type: lower-greek;
+            list-style-position: inside;
+        }
+    </style>
 </head>
 <body>
     <h1>목록 관련 스타일(list~ )</h1>
@@ -13,17 +29,38 @@
     <h3>list-style-position : 블릿기호의 위치를 조정할 때 사용</h3>
 
     <pre>
-        * 순서 없는 목록 (ul)
-          선택자 {
-            list-style-type : disc|circle|square|none;
-          }
+    * 순서 없는 목록 (ul)
+        선택자 {
+        list-style-type : disc|circle|square|none;
+        }
 
-        * 순서 있는 목록 (ol)
-          선택자 {
-            list-style-type : decimal|deciaml-leading-zero;
-            list-style-type : lower-alpha|upper-alpha;
-            list-style-type : lower-roman|upper-roman;
-          }  
+    * 순서 있는 목록 (ol)
+        선택자 {
+        list-style-type : decimal|deciaml-leading-zero;
+        list-style-type : lower-alpha|upper-alpha;
+        list-style-type : lower-roman|upper-roman;
+        }
+
+    * 위치 조정
+      선택자 {
+        list-style-position : outside(기본값)|inside;
+      }
     </pre>
+
+    <h4>순서가 없는 List</h4>
+    <ul id="ul1">
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+    </ul>
+
+    <h4>순서가 있는 List</h4>
+    <ol id="ol1">
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>jQuery</li>
+    </ol>
 </body>
 </html>
