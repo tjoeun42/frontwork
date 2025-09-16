@@ -1,3 +1,20 @@
 .size-test { border: 10px solid red;}
 #test1 { width: 400px; height: 200px;}
 #test2 { width: 50%; height: 150px;}
+
+.display-test {
+    border: 1px solid;
+    width: 150px;
+    height: 150px;
+}
+.red { background-color: red; }
+.yellow { background-color: yellow;}
+.pink { background-color: pink;}
+.green { background-color: green;}
+.purple { background-color: purple;}
+
+.inline { display: inline; }
+
+.inline-block { display: inline-block;}
+
+.block { display: block;}
