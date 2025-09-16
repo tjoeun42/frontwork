@@ -1,0 +1,55 @@
+body {
+    background-color: rgb(110, 238, 243);
+    background-color: rgba(110, 238, 243, 0.3);
+}
+#div-bg {
+    background-color: white;
+    padding: 20px;
+    border: 10px solid blue;
+    width: 50%;  /* 내용만 50% */
+}
+
+.div-test {
+    margin: 30px;
+    background-color: darkkhaki;
+    border: 10px dashed;
+    padding: 20px;
+}
+#div1 {background-clip: border-box;}   /* 기본값 */
+#div2 {background-clip: padding-box;}
+#div3 {background-clip: content-box;}
+
+#bg-img {
+    border: 1px solid;
+    width: 70%;
+    height: 800px;
+
+    background-image: url("../img/flowers.png");
+    background-repeat: no-repeat;
+    /* background-repeat: repeat-x; */
+    /* background-repeat: repeat-y; */
+
+    background-size: auto;  /* 기본값 원래 이미지 사이즈 */
+    background-size: contain;    /* 해당 요소안에 이미지가 모두 보이게(빈공간이 생길 수 있음) */
+    background-size: cover;     /* 해당 요소안에 이미지가 가득차게(이미지가 짤릴수 있음) */
+    background-size: 200px;     /* 가로길이(세로는 원래이미지의 비율에 맞춰) */
+    background-size: 200px 300px;   /* 가로길이 세로길이 */
+    background-size: 30%;
+    background-size: 50% 50%;
+    background-size: auto;
+
+    background-position: left top;  /* 기본값 */
+    background-position: center bottom;
+    background-position: center center;
+    background-position: 20% 30%;
+    background-position: 50% 50%;
+
+    background-attachment: scroll;  /* 기본값 */
+    background-attachment: fixed;
+
+    /*
+    background 속성값은 한번에 가능
+    - '색상 이미지 반복여부 위치 / 사이즈' 순서대로 작성할 수 있음
+    */
+    background: #f1c2c2 url(https://i.namu.wiki/i/4SJw3XmrWURDM282HMeX52C-sfysH3563d6MV6Y0KsnL5BWtlPad1LvtK5ouRAZGFNl4nGDVxK8PqTkOj3glX06UAhdU3t5JGH_UdtdROuYc1h27sR2rXKrapK7QgnSBP08hQ-FzEnKxGoLpUxj6jQ.webp) no-repeat center center / 100px auto;
+}

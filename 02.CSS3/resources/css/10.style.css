@@ -1,0 +1,29 @@
+table {
+    border:1px solid;
+
+    /*border-collapse: separate;  /* 기본값 */
+    border-spacing: 10px 20px;      /* 표 테두리와 셀테두리의 간격 */
+    border-collapse: collapse;      /* 표 테두리와 셀테두리 합치기 */
+    
+    width: 480px;
+    table-layout: fixed;  /* auto(기본값), fixed : 테이블의 width값 고정(글씨가 많아도 안늘어남)  */
+}
+thead, tfoot {
+    background-color: lightgray;
+}
+tbody {
+    background-color: beige;
+}
+th, td {
+    border: 1px solid;
+    width: 160px;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    vertical-align: bottom;  /* middle(기본값)  */
+
+    word-break: break-all;  /* 영문의 글자에 공백이 없어도 중간에 끊어서 내림 */
+}
+.borderTop {
+    border-top: 2px solid red;
+}
