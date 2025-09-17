@@ -1,0 +1,31 @@
+header { text-align: center; }
+section {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    justify-content: space-between;
+}
+.menu-item {
+    width: 300px;
+    height: 200px;
+    margin: 5px;
+    background: no-repeat center;
+    background-size: cover;
+}
+#menu1 { background-image: url(../img/rice.jpg); }
+#menu2 { background-image: url(../img/stew.jpg); }
+#menu3 { background-image: url(../img/side_dish.jpg); }
+#menu4 { background-image: url(../img/cooking.png); }
+#menu5 { background-image: url(../img/dessert.jpg); }
+#menu6 { background-image: url(../img/sushi.jpg); }
+#menu7 { background-image: url(../img/stew.jpg); }
+#menu8 { background-image: url(../img/side_dish.jpg); }
+#menu9 { background-image: url(../img/cooking.png); }
+#menu10 { background-image: url(../img/dessert.jpg); }
+
+h2 {
+    color: white;
+    text-align: center;
+    line-height: 320px;
+    text-shadow: 1px 1px black;
+}
