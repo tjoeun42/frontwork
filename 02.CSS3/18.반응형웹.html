@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="resources/css/18.common.css" rel="stylesheet">
+    <link href="resources/css/18.mobile.css" rel="stylesheet"
+          media="screen and (max-width:600px)">
+    <link href="resources/css/18.tablet.css" rel="stylesheet"
+          media="screen and (min-width:601px) and (max-width:999px)">
+    <link href="resources/css/18.pc.css" rel="stylesheet"
+          media="screen and (min-width:1000px)">      
     <title>반응형 웹</title>
     <!--
         * CSS 미디어 쿼리(Media Query)
@@ -20,6 +26,24 @@
           not : 쿼리가 거짓일 때만 참을 반환
           only : 전체 쿼리가 일치할 경우에만 스타일 적용
           ,(컴마) : or 연산자와 같은 동작
+    -->
+
+    <!--
+    <style>
+        @media screen and (max-width:1920px) {
+
+        }
+        @media screen and (max-width:1000px) {
+            
+        }
+        @media screen and (max-width:700px) {
+            
+        }
+
+        @media all and (min-width:700px) and (max-width:1024px) {
+            
+        }
+    </style>
     -->
 </head>
 <body>

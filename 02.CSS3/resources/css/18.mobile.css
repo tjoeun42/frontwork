@@ -1,0 +1,25 @@
+/* 전체 */
+body {
+    width: 100%;
+}
+
+/* header */
+header {
+    height: 60px;
+    line-height: 60px;
+}
+
+/* 본문 */
+section {
+    background-color: cornsilk;
+}
+
+/* aside */
+aside {
+    background-color: rgb(185, 250, 252);
+}
+
+/* footer */
+footer {
+    height: 50px;
+}
