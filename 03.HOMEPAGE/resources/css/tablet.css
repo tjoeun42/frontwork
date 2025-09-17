@@ -1,0 +1,52 @@
+/* 전체 */
+body {
+    margin: 0 auto;
+}
+
+/* header */
+header { height: 350px; }
+header>#logo {
+    float: left;
+    height: 23px;
+    margin: 10px 0 10px 10px;
+}
+header>form {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 10px;
+}
+header>#titleImg {
+    clear: both;
+    width: 100%;
+    height: 310px;
+}
+
+/* nav */
+.navi {
+    height: 60px;
+}
+.navi a {
+    display: inline-block;
+    height: 60px;
+    width: 24%;
+    text-align: center;
+    line-height: 60px;
+}
+
+/* 본문 */
+section {
+    padding-left: 30px;
+}
+aside {
+    width: 100%;
+}
+aside img {
+    float: left;
+    width: 33%;
+    margin-left: 1px;
+}
+footer {
+    clear: both;
+    padding : 20px 0 10px 20px;
+}
