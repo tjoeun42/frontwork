@@ -49,3 +49,16 @@
     left: 50px;
     z-index: 2;
 }
+
+.vis-test {
+    width: 100px;
+    height: 100px;
+}
+
+.float-test {
+    width: 70px;
+    height: 30px;
+    border: 1px solid;
+    /* float: left; */
+    float: right;
+}

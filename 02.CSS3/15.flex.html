@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex layout</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            border: 2px solid;
+            width:600px;
+            height: 50vh;
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        li {
+            width: 100px;
+            height: 100px;
+            background-color: darkgrey;
+            border: 2px solid;
+            margin: 5px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>flex</h1>
+    <h3>기본 축을 기준으로 요소들을 정렬</h3>
+    <pre>
+    * 부모요소 : flex-container
+        - display : flex => flex를 사용하겠다고 알림
+        - flex-direction : row(기본값)|column|row-reverse|coulmn-reverse
+        - justify-content : 메인축 정렬(flex-direction이 row라면 row, column이라면 column)
+        - align-items : 크로스축 정렬(flex-direction이 row라면 column, column이라면 row)
+
+        - flew-wrap : 줄바꿈여부
+        - align-content : 여러줄인 경우의 크로스 축 설정
+
+    * 자식요소(정렬의 주체) : flex-item
+        - flex-grow : 빈 여백을 아이템들의 주어진 배율대로 늘어나면서 레이아웃을 채움
+        - flex-shrink : 넘친 아이템 영역을 분배하여 레이아웃 영역 안에 아이템들이 배치되도록 하는 방식
+        - flex-basis : 아이템의 크기를 직접 지정
+    </pre>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+</body>
+</html>

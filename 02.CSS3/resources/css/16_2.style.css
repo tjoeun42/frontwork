@@ -1,0 +1,36 @@
+/* 전체 */
+* { margin: 0 auto; }
+
+/* 헤더 */
+header {
+    width: 100%;
+    height: 120px;
+    background-color: cornflowerblue;
+    border: 1px solid;
+}
+h1 {
+    color: white;
+    text-align: center;
+    line-height: 120px;
+}
+
+/* 본문 */
+section {
+    float: left;
+    width: 70%;
+    height: 500px;
+    background-color: honeydew;
+}
+aside {
+    float: right;
+    width: 30%;
+    height: 500px;
+    background-color: darkseagreen;
+}
+
+/* footer */
+footer {
+    clear: both;
+    height: 120px;
+    background-color: rgb(178, 115, 236);
+}
