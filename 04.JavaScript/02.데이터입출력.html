@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 입출력</title>
+    <style>
+        .area {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트에서의 데이터 입/출력</h1>
+    <pre>
+    * window : 자바스트립트 내장 객체로 브라우저 창이 열릴때마다 하나씩 만들어지는 객체<br>
+               브라우저 창 안에 존재하는 모든 요소들의 최상위 객체(생략가능)
+    * document : 웹 문서마다 하나씩 만들어지는 객체(html 문서에 대한 정보들을 가지고 있음)               
+    </pre>
+
+    <h2>1. 데이터 출력하는 구문</h2>
+    <p>
+        1) [winodw.]alert("알림창에 출력할 문구");<br>
+        2) [winodw.]console.log("콘솔에 출력할 문구");<br>
+        3) document.write("화면상에 출력할 문구");<br>
+        4) 선택한요소.innerHTML|innerText = "요소에 출력할 문구";
+    </p>
+
+    <h3>3) document.write("화면상에 출력할 문구");</h3>
+
+    <button onclick="documentWrite();">화면상에 출력</button>
+    <script>
+        function documentWrite() {
+            // document.write('안녕하세요');
+            // document.write('<b>안녕하세요</b><br><h2>반가워요</h2>');
+            // 출력할 문구에 html 태그가 있을 경우 이를 해석하여 시각적인 요소로 보여짐
+            /*
+            document.write("<table border='1'>"
+                                + "<tr>"
+                                +    "<th>이름</th>"
+                                +    "<th>주소</th>"
+                                + "</tr>"
+                                + "<tr>"
+                                +    "<td>홍길동</td>"
+                                +    "<td>서울특별시</td>"
+                                + "</tr>"
+                                + "</table>"
+                            );
+            */
+            var ta = "<table border='1'>";
+                ta += "<tr>";
+                ta +=    "<th>이름</th>";
+                ta +=    "<th>주소</th>";
+                ta += "</tr>";
+                ta += "<tr>";
+                ta +=    "<td>홍길동</td>";
+                ta +=    "<td>서울특별시</td>";
+                ta += "</tr></table>";
+            document.write(ta);
+        } 
+    </script>
+    <br><br>
+
+    <h3>4) 선택한요소.innerHTML|innerText = "요소에 출력할 문구";</h3>
+    <div class="area" id="area1">
+        자바스트립트에서 어떤 요소(element)안의 값(content)를 가지고 온다거나
+        변경하고자 할 때 <b>innerHTML, innerText</b>라는 속성에 접근
+    </div>
+    
+    <button onclick="tabValue();">확인</button>
+    <script>
+        function tabValue() {
+            var divEle = document.getElementById('area1');
+
+            console.log(divEle);
+            console.dir(divEle);
+            // console.dir : 해당 요소의 디렉토리 구조를 보고자 할 때 사용(속성들에 대한 정보)
+
+            // 선택된 요소의 속성에 접근가능(.을 통해서 접근)
+            console.log(divEle.id);         // id : 해당 요소의 아이디 속성
+            console.log(divEle.className);  // className : 해당 요소의 클래스 속성
+
+            console.log(divEle.innerHTML);  // innerHTML : 요소의 content영역 안의 html태그까지 다 포함
+            console.log(divEle.innerText);  // innerText : 요소의 content영역 안의 text만 가져옴(html태그x)
+        
+            divEle.innerHTML = "<h2>innerHTML로 속성값 변경함</h2>";
+            // divEle.innerText = "<h2>innerHTML로 속성값 변경함</h2>";
+            divEle.style.backgroundColor = "pink";
+            divEle.style.color = "red";
+        }
+    </script>
+    <br><br>
+
+    <hr>
+
+    <h2>2. 데이터 입력받는 구문 (변수에 기록 가능)</h2>
+    <p>
+        1) 변수 = [window.]confirm("질문내용");<br>
+        2) 변수 = [window.]prompt("질문내용");<br>
+        3) 변수 = 선택한요소.속성(id, className, innerHTML, innerText ...);<br>
+        4) 변수 = 선택한input요소.value;
+    </p>
+
+    <h3>1) 변수 = [window.]confirm("질문내용");</h3>
+    <p>
+        confirm호출시 "질문내용"과 "확인/취소"버튼이 존재하는 알림창 발생<br>
+        확인 버튼을 클릭하면 true, 취소 버튼을 클릭하면 false를 반환
+    </p>
+
+    <button onclick="testConfirm();">클릭</button>
+    <div id="area2"></div>
+
+    <script>
+        function testConfirm() {
+            var result = confirm("배고프면 확인, 아니면 취소를 누르세요");
+            console.log(result);
+
+            if(result) {
+                console.log("빨리 밥먹으러 가요");
+            } else {
+                console.log("저녁은 굶어요");
+            }
+
+            var divEle = document.getElementById("area2");
+            if(result) {
+                divEle.innerHTML = "<h3>빨리 밥먹으러 가요</h3>";
+            } else {
+                divEle.innerHTML = "<h3>저녁은 굶어요</h3>";
+            }
+        }
+    </script>
+
+    <br>
+
+    <h3>2) 변수 = [window.]prompt("질문내용");</h3>
+    <p>
+        prompt호출시 "질문내용"과 입력할 수 있는 "텍스트상자"와 
+        "확인/취소" 버튼이 보여지는 알림창 발생<br>
+        확인버튼 클릭시 텍스트상자에 입력한 값이 문자열로 반환,
+        취소버튼 클릭시 null값 반환
+    </p>
+
+    <button onclick="testPrompt();">클릭</button>
+    <div id="area3"></div>
+
+    <script>
+        function testPrompt() {
+            var name = prompt("이름 입력");
+            var age = prompt("나이 입력");
+
+            console.log(name);
+            console.log(age);
+
+            var dirEle = document.getElementById("area3");
+            dirEle.innerHTML = "당신의 이름은 <b>" + name 
+                + "</b>이고, 나이는 <b>" + age + "</b>살 이군요";
+        }
+    </script>
+
+    <br>
+
+    <button onclick="testPrompt2();">숫자입력</button>
+
+    <ul id="area4">
+
+    </ul>
+
+    <script>
+        function testPrompt2() {
+            var num = prompt("숫자만 입력하세요");
+
+            for(var i=1; i<=num; i++) {
+                
+            }
+        }
+    </script>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

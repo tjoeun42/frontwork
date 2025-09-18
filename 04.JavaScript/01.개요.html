@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>자바스크립트 개요</title>
+    <script src="resources/js/01.javaScript.js" rel="javascript"></script>
+    <!--
+    * 웹의 3요소
+      1. html : 웹 문서의 큰 틀(뼈대)
+      2. css : 스타일(색상, 디자인, 간격, 배치 등)
+      3. javaScript : 웹 문서에서 이벤트가 발생했을 때 실행해야되는 동작들 처리
+    -->
+</head>
+<body>
+    <h1>자바스크립트 개요</h1>
+    <h3>1. 스크립트 언어란?</h3>
+    <p>
+        프로그램의 동작을 사용자의 요구에 맞게 수행되도록 해주는 용도<br>
+        빠르게 배우고 짧은 소스코드로 상호작용 되도록 고안됨
+    </p>
+
+    <hr>
+
+    <h3>2. 자바스크립트</h3>
+    <p>
+        웹 브라우저에서 많이 사용되는 "인터프린터 방식"의 스트립트언어<br>
+        - 인터프린터 방식 : 코드를 한줄씩 읽어가면서 바로 실행하는 방식<br>
+          (실시간으로 텍스트를 분석하여 실행됨) => 코드에 문법오류가 있으면 실행 시점에서 알 수 있음
+    </p>
+
+    <hr>
+
+    <h3>3. 장/단점</h3>
+    <h4>* 장점</h4>
+    <ul>
+        <li>컴파일 과정없이 인터프린터 코드를 한줄씩 읽어가면서 바로 실행되기 때분에 "수행속도가 빠름</li>
+        <li>코드 작성이 간단하여 초보자가 접하기 쉽다.(단순한 구조, 원칙)<br>
+            ex) 접근제한자의 개념 없음, 변수 선언시 자료형을 정할 필요 없음
+        </li>
+    </ul>
+
+    <h4>* 단점</h4>
+    <ul>
+        <li>html소스 코드에서 같이 작성되면 외부에 공개됨 => 보안의 취약점 발생</li>
+    </ul>
+
+    <hr>
+
+    <h3>4. 자바스트립트 사용법</h3>
+    <ol>
+        <li>inline(인라인) : 태그 내에 간단한 소스코드를 작성하여 실행되게 하는 방법</li>
+        <li>internal(내부) : html문서내에 소스코드를 작성하여 실행되게 하는 방법</li>
+        <li>external(외부) : 별도의 .js파일로 소스코드를 작성하여 실행되게 하는 방법</li>
+    </ol>
+
+    <h4>1) inline방식</h4>
+    <p>
+        태그 내에 간단한 소스코드를 작성하여 실행되게 하는 방법<br>
+        [표현법]<br>
+        &lt;태그 on이벤트명="해당 요소에 해당 이벤트 발생시 실행할 코드"&gt;
+    </p>
+
+    <button onclick="window.alert('알림창 출력 버튼 클릭함!!');">알림창 출력</button>
+    <button onclick="console.log('콘솔 출력 버튼 클릭함!!!');">콘솔 출력</button>
+
+    <br><br>
+
+    <h4>2) internal 방식</h4>
+    <p>
+        현재 html문서내에 script태그 영역안에 소스코드를 작성<br>
+        script태그는 head 또는 body 태그에 모두 작성 가능
+    </p>
+
+    <!-- 방법 1 -->
+    <button id="btn">알림창 출력</button>
+    <script>
+        // 스크립트 안의 주석은 프로그램 주석과 동일
+
+        // 1. 이벤트를 부여하고자 하는 요소를 선택하여 변수에 담기
+        var btn = document.getElementById('btn');
+        
+        // 2. 해당 버튼요소에 클릭이벤트 발생시 실행할 함수(이벤트 핸들러) 정의
+        btn.onclick = function() {
+            window.alert('버튼 클릭!!');
+            console.log(btn);
+        }
+    </script>
+
+    <!-- 방법 2 -->
+    <!-- 1. 버튼에 클릭 이벤트가 발생 되면 btnClick()함수를 실행-->
+    <button onclick="btnClick();">콘솔에 출력</button>
+    <script>
+        // 2. 함수 정의
+        function btnClick() {
+            console.log('버튼 클릭!!!');    
+        }
+    </script>
+
+    <br><br>
+
+    <h4>3) external 방식</h4>
+    <p>
+        별도의 .js파일로 소스코드를 작성하여 실행되게 하는 방법
+    </p>
+
+    <button onclick="test();">알림창 출력(외부)</button>
+</body>
+</html>

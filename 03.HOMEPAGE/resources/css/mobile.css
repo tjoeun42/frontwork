@@ -2,3 +2,44 @@
 body {
     margin: 0 auto;
 }
+
+/* header */
+header {
+    text-align: center;
+}
+#logo {
+    width: 40%;
+    margin-top: 10px;
+}
+#login {
+    margin: 5px 0 15px 0;
+}
+#titleImg {
+    display: none;
+}
+
+/* nav */
+.navi {
+    height: 200px;
+}
+.navi a {
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    border-bottom:1px solid white ;
+}
+
+/* 본문 */
+section {
+    padding-left: 5%;
+}
+
+/* aside */
+aside img {
+    width: 100%;
+}
+
+/* footer */
+footer {
+   padding: 15px; 
+}

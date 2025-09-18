@@ -38,14 +38,17 @@ header>#titleImg {
 section {
     padding-left: 30px;
 }
+
+/* aside */
 aside {
     width: 100%;
 }
 aside img {
     float: left;
-    width: 33%;
-    margin-left: 1px;
+    width: 33.2%;
 }
+
+/* footer */
 footer {
     clear: both;
     padding : 20px 0 10px 20px;

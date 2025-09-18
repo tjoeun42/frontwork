@@ -40,6 +40,8 @@ section {
     width: 650px;
     margin-left: 10px;
 }
+
+/* aside */
 aside {
     float: right;
     width: 340px;
@@ -48,6 +50,8 @@ aside img {
     width: 340px;
     margin-top: 3px;
 }
+
+/* footer */
 footer {
     clear: both;
     padding : 20px 0 10px 20px;
