@@ -168,15 +168,49 @@
     <script>
         function testPrompt2() {
             var num = prompt("숫자만 입력하세요");
-
+            /*
+            var ulEle = document.getElementById("area4");
             for(var i=1; i<=num; i++) {
-                
+                ulEle.innerHTML += "<li>목록" + i + "</li>";
             }
+            */
+            
+            var str = "";
+            for(var i=1; i<=num; i++) {
+                str += "<li>목록" + i + "</li>";
+            }
+            // var ulEle = document.getElementById("area4");
+            // ulEle.innerHTML = str;
+            document.getElementById("area4").innerHTML = str;
         }
     </script>
 
+    <br>
 
+    <h3>4) 변수 = 선택한input요소.value;</h3>
+    ID : <input id="userId"><br>
+    PW : <input type="password" id="userPw"><br>
+    <button onclick="testInput();">로그인</button><br>
+    <br><br>
+    <input id="area5">
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <script>
+        function testInput() {
+            var input1 = document.getElementById("userId");
+            var input2 = document.getElementById("userPw");
+
+            console.log(input1);
+            console.dir(input1);
+
+            console.log(input1.value);
+
+            var id = input1.value;
+            var pw = input2.value;
+
+            document.getElementById("area5").value = id + ", " + pw;
+            input1.value = "";
+            input2.value = "";
+        }
+    </script>
 </body>
 </html>
