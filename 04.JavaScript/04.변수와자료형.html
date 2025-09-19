@@ -85,5 +85,148 @@
             console.log(gender);
         }
     </script>
+
+    <h3>* 변수 선언 위치에 따른 전역변수/지역변수</h3>
+
+    <script>
+        /*
+        // window.onload : 이 문서가 다 로딩된 후 바로 실행시키고자 할 때
+        window.onload = function() {
+            console.log("문서로딩 완료");
+        }
+        */
+
+        // 특정 함수영역 밖에 선언된 변수는 전역변수로 잡힘
+        var declareVar = "var 전역변수";
+        let declareLet = "let 전역변수";
+        const declareConst = "const 전역변수";
+        declareNone = "그냥 전역변수";  // 변수명 앞에 아무런 키워드가 없으면 전역변수임.
+
+        window.onload = function() {
+            /*
+            console.log(declareVar);
+            console.log(declareLet);
+            console.log(declareConst);
+            console.log(declareNone);
+            */
+
+            // 전역변수와 동일한 이름으로 지역변수 선언
+            // 지역변수가 우선순위가 더 높아 지역변수가 호출됨
+            var declareVar = "var 지역변수";
+            let declareLet = "let 지역변수";
+            const declareConst = "const 지역변수";
+
+            console.log(declareVar);
+            console.log(declareLet);
+            console.log(declareConst);
+            console.log("------------------");
+
+            // 전역변수에 접근하고 싶다면 => window. 또는 this. 으로 접근( **var만 가능)
+            console.log(window.declareVar);
+            console.log(this.declareVar);
+
+            // let, const의 경우 => undefined로 뜸
+            console.log(this.declareLet);
+            console.log(this.declareConst);
+
+            // 변수명 앞에 아무런 키워드가 없으면 무조건 전역변수임.
+            declareInner = "얘는 뭘까?";
+            console.log(declareInner);
+            console.log(this.declareInner);
+
+            // 다른 함수 호출
+            test();
+        }
+
+        function test() {
+            console.log("================");
+            console.log(declareInner);
+        }
+    </script>
+
+    <hr>
+
+    <h2>자료형</h2>
+    <p>
+        Dyanmic Typing : 변수 선언시 자료형을 별도로 지정하지 않음(그렇다고 자료형이 없는거 아님)
+                         => 대입되는 값에 의해 타입 결정됨
+    </p>
+
+    <h2>자바스크립트의 자료형</h2>
+    <ul>
+        <li>string(문자열)</li>
+        <li>number(숫자)</li>
+        <li>boolean(논리)</li>
+        <li>object(객체)</li>
+        <li>function(함수)</li>
+        <li>undefined(초기화가 안된 변수)</li>
+    </ul>
+
+    <button onclick="typeTest();">자료형 테스트</button>
+    <div id="area1"></div>
+
+    <script>
+        function typeTest() {
+            const name = "더조은";
+            const age = 20;
+            const flag = true;
+            const hobby = ['영화','음악','낮잠'];       // 배열 객체
+            const divEle = document.querySelector('#area1');    // 요소 객체
+            const user = {              //객체 생성 
+                name : '이한나',
+                age : 25,
+                id : 'user01'
+            };
+            const fn = function() {
+                alert('함수자료형');
+            }
+            let noVal;
+
+            console.log("-------- 자료형 --------");
+
+            // 자료형 확인 : typeof 변수명
+            console.log(typeof name, name);
+            console.log(typeof age, age);
+            console.log(typeof flag, flag);
+
+            console.log(typeof hobby, hobby);
+            console.log(typeof divEle, divEle);
+            console.log(typeof user, user);
+
+            console.log(typeof fn, fn);
+
+            console.log(typeof noVal, noVal);
+
+            // 백틱(ES6 버전부터 사용가능)
+            let name1 = '이름 '
+                        + '홍길동';
+
+            let name2 = `이름
+            홍길동`;
+
+            let str = 'Hello ' + name2;
+            let str1 = `Hello ${name2}`;
+
+            let ta = `<table>
+                        <tr>
+                            <td>${name1}</td>
+                        <tr>
+                        <tr>
+                            <td>${str}</td>
+                        </tr>
+                     </table>`;       
+
+            // div화면에 출력
+            // divEle.innerHTML = typeof name + ", " + name + "<br>";
+            divEle.innerHTML = `${typeof name}, ${name}<br>
+                                ${typeof age}, ${age}<br>
+                                ${typeof flag}, ${flag}<br>
+                                ${typeof hobby}, ${hobby}<br>
+                                ${typeof divEle}, ${divEle}<br>
+                                ${typeof user}, ${user}<br>
+                                ${typeof fn}, ${fn}<br>
+                                ${typeof noVal}, ${noVal}<br>`;
+        }
+    </script>
 </body>
 </html>
