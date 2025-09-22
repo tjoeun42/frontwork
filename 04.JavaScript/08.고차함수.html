@@ -201,13 +201,68 @@
     <script>
         function everyTest() {
             const area5 = document.getElementById('area5');
-            const numbers = [2, 3, 5, 7, 11, 13, 17];  //소소 집합인지 판단
+            const numbers = [2, 3, 5, 7, 11, 13, 17];  //소수 집합인지 판단
 
-            
+            const primeNumber = numbers.every(function(num) {
+                return isPrime(num);
+            });
+
+            function isPrime(num) {
+                if(num < 2)
+                    return false;
+
+                for(let i=2; i <= Math.sqrt(num); i++) {
+                    if(num % i == 0)
+                        return false;
+                }
+                return true;
+            }
+            area5.innerHTML += `[${numbers}]는 소수의 배열인가? ${primeNumber}`;
         }
     </script>
 
+    <hr>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h3>* find : 조건을 만족하는 첫번째 요소 반환, 없으면 undefined반환</h3>
+
+    <div class="area" id="area6"></div>
+    <button onclick="findTest();">find</button>
+
+    <script>
+        function findTest() {
+            const area6 = document.getElementById('area6');
+            const users = [
+                { id:1, name:'이혜영'},
+                { id:2, name:'박영실'},
+                { id:3, name:'최자영'},
+                { id:4, name:'박영실'},
+            ];
+
+            const user = users.find(function(obj) {
+                return obj.name == '박영실';
+            });
+
+            console.log(user);      // 없을 때 undefined
+            area6.innerHTML = `박영실의 id는 ${user.id}`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>* findIndex : 조건을 만족하는 첫번째 요소의 인덱스 반환, 없으면 -1반환</h3>
+
+    <div class="area" id="area7"></div>
+    <button onclick="findIndexTest();">findIndex</button>
+    <script>
+        function findIndexTest() {
+            const area7 = document.getElementById('area7');
+            const numbers = [5, 17, 4, 150, 57, 230];
+
+            const index = numbers.findIndex(function(num) {
+                return num > 100;
+            });
+            area7.innerHTML = `[${numbers}]중 100보다 큰 값이 처음 나오는 index번호는? ${index}`;
+        }
+    </script>
 </body>
 </html>

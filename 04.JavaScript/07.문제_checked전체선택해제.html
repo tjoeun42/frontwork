@@ -94,9 +94,16 @@
         }
 
         function updateSelectAll() {
-            const allOptions = document.querySelectorAll('.book-option');
+            const allOptions = document.querySelectorAll('.book-option');  // nodeList: 배열 아님
             const selectAll = document.querySelector('#selectAll');
 
+            // Array.from(allOptions) : 배열로 변환 
+            const allChecked = Array.from(allOptions).every(function(option) {
+                return option.checked;
+            });
+            selectAll.checked = allChecked;
+
+            /*
             function allChecked(options) {
                 for(const cb of options) {
                     if(!cb.checked) {
@@ -106,6 +113,7 @@
                 return true;
             }
             selectAll.checked = allChecked(allOptions);
+            */
         }
     </script>
 </body>
