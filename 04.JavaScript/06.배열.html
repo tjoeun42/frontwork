@@ -288,6 +288,47 @@
         }
     </script>
 
+    <hr>
+
+    <h4>9) 반복처리(for문, for ..in문, for ..of문, forEach)</h4>
+
+    <div class="area" id="area10"></div>
+    <button onclick="for1();">확인하기</button>
+
+    <script>
+        function for1() {
+            const area10 = document.querySelector('#area10');
+            const arr = ['가', '나', '다'];
+
+            area10.innerHTML += 'for : ';
+            for(let i=0; i<arr.length; i++) {
+                area10.innerHTML += `${arr[i]}, `;
+            }
+            area10.innerHTML += '<br>';
+
+            // for of문(자바의 향상된 for문과 동일)
+            area10.innerHTML += 'for of : ';
+            for(let ch of arr) {
+                area10.innerHTML += `${ch}, `;
+            }
+            area10.innerHTML += '<br>';
+
+            // for in문 : 배열의 인덱스 속성을 가져옴
+            area10.innerHTML += 'for in : ';
+            for(let i in arr) {
+                area10.innerHTML += `${i} -> ${arr[i]}, `;
+            }
+            area10.innerHTML += '<br>';
+
+            // forEach() : 각 요소별로 전달한 함수(콜백함수)를 실행
+            area10.innerHTML += 'forEach : <br>';
+
+            arr.forEach(function(value, index, arr1) {
+                area10.innerHTML += `${value} : ${index} : ${arr1}<br>`;
+            });
+        }
+    </script>
+
 
 
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkbox 전체 선택 및 해제</title>
+</head>
+<body>
+    <fieldset>
+        <legend>읽고 싶은 장르</legend>
+        <table>
+            <tr>
+                <td rowspan="2">
+                    <input type="checkbox" id="selectAll" name="book" 
+                    value="selectall" onclick="selectAllTogggle(this);">
+                    <b>Select All</b>
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="fiction" onclick="updateSelectAll();">
+                    소설
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="essay" onclick="updateSelectAll();">
+                    에세이
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="humanities" onclick="updateSelectAll();">
+                    인문
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="cooking" onclick="updateSelectAll();">
+                    요리
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="health" onclick="updateSelectAll();">
+                    건강
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="economy" onclick="updateSelectAll();">
+                    경제
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="history" onclick="updateSelectAll();">
+                    역사
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="it" onclick="updateSelectAll();">
+                    컴퓨터
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="science" onclick="updateSelectAll();">
+                    과학
+                </td>
+                <td>
+                    <input type="checkbox" name="book" class="book-option"
+                    value="travel" onclick="updateSelectAll();">
+                    여행
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <script>
+        function selectAllTogggle(selectAll) {
+            const checkboxes = document.querySelectorAll('.book-option');
+            const shouldCheck = selectAll.checked;
+
+            // for(let i=0; i<checkboxes.length; i++) {
+            //     checkboxes[i].checked = shouldCheck;
+            // }
+
+            // for(let i in checkboxes) {
+            //     checkboxes[i].checked = shouldCheck;
+            // }
+
+            // for(let checkbox of checkboxes) {
+            //     checkbox.checked = shouldCheck;
+            // }
+
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = shouldCheck;
+            });
+        }
+
+        function updateSelectAll() {
+            const allOptions = document.querySelectorAll('.book-option');
+            const selectAll = document.querySelector('#selectAll');
+
+            function allChecked(options) {
+                for(const cb of options) {
+                    if(!cb.checked) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            selectAll.checked = allChecked(allOptions);
+        }
+    </script>
+</body>
+</html>
