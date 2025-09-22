@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고차함수</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-left: 10px;
+        }
+        th, td {
+            padding: 5px 10px;
+        }
+        .area {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>고차함수</h1>
+    <p>
+        - High-order function : 함수를 인자로 받거나, 함수를 반환하는 함수
+    </p>
+    <table border="1">
+        <tr>
+            <th>고차함수</th>
+            <th>설명</th>
+        </tr>
+        <tr>
+            <td>forEach()</td>
+            <td>배열의 각 요소에 대해 콜백 함수 실행(반환값 없음)</td>
+        </tr>
+        <tr>
+            <td>map()</td>
+            <td>배열의 각 요소를 변환하여 새 배열을 반환</td>
+        </tr>
+        <tr>
+            <td>filter()</td>
+            <td>조건을 만족하는 요소만 뽑아 새 배열 반환</td>
+        </tr>
+        <tr>
+            <td>reduce()</td>
+            <td>배열을 하나의 값으로 누적(총합, 평균 계산에 사용)</td>
+        </tr>
+        <tr>
+            <td>some()</td>
+            <td>조건을 하나라도 만족하면 true반환(논리연산자 or)</td>
+        </tr>
+        <tr>
+            <td>every()</td>
+            <td>모든 요소가 조건을 만족하면 true반환(논리연산자 and)</td>
+        </tr>
+        <tr>
+            <td>find()</td>
+            <td>조건을 만족하는 첫번째 요소 반환</td>
+        </tr>
+        <tr>
+            <td>findIndex()</td>
+            <td>조건을 만족하는 첫번째 인덱스 반환</td>
+        </tr>
+    </table>
+
+    <h3>* map : 배열의 각 요소별 작업 후 새 요소를 담은 배열 반환</h3>
+
+    <div class="area" id="area1">
+        <ul></ul>
+    </div>
+    <button onclick="mapTest();">map</button>
+
+    <script>
+        function mapTest() {
+            const area1 = document.querySelector('#area1>ul');
+            const arr = [1, 2, 3];   // [1, 4, 9]
+
+            const result = arr.map(function(ele, index, arr) {
+                console.log(ele, index, arr);
+                return ele * ele;
+            });
+
+            area1.innerHTML = `arr : ${arr}<br>`;
+            area1.innerHTML += `arr.map() : ${result}<br><hr>`;
+
+            const names = ['이고잉', '한문철', '이재석'];  // ['<li>이고잉</li>', '<li>한문철</li>', '<li>이재석</li>']
+
+            const nameList = names.map(function(name){
+                return `<li>${name}</li>`;
+            });
+            console.log(nameList);
+
+            nameList.forEach(function(value) {
+                area1.innerHTML += value;
+            });
+
+            // for(let i in nameList) {
+            //     area1.innerHTML += name[i];
+            // }
+
+            // for(let name of nameList) {
+            //     area1.innerHTML += name;
+            // }
+        }
+    </script>
+    
+    <hr>
+
+    <h3>* filter : 각 요소별 콜백함수를 실행하여 true인 요소만 새 배열에 담아 반환</h3>
+
+    <div class="area" id="area2">
+        <ul></ul>
+    </div>
+    <button onclick="filterTest();">filter</button>
+
+    <script>
+        function filterTest() {
+            const area2 = document.querySelector('#area2>ul');
+            const nums = [1,2,3,4,5,6,7,8,9,10];
+
+            const evens = nums.filter(function(n) {
+                return n % 2 == 0;
+            });
+            area2.innerHTML += `<li>${evens}</li>`;
+
+            // 1~100까지 숫자를 담은 배열을 만들어, 30이하의 3의 배수만 담은 새 배열 만들기
+            const arr = [];
+            for(let i=1; i<=100; i++) {
+                // arr[i] = i+1;    // i=0; i<100;
+                arr.push(i);
+            }
+            
+            const newArr = arr.filter(function(n) {
+                return n <= 30 && n % 3 == 0;
+            });
+
+            area2.innerHTML += `<li>${newArr}</li>`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>* reduce : 모든 요소를 대상으로 특정작업 후 하나의 값(객체)로 반환</h3>
+    <p>
+        - 최대값, 최소값, 총합계, 평균 등의 작업에 적합<br>
+    </p>
+
+    <div class="area" id="area3"></div>
+    <button onclick="reduceTest();">reduce</button>
+
+    <script>
+        function reduceTest() {
+            const area3 = document.getElementById('area3');
+            /*
+            reduce(function(pv, element, index, arr) {
+                - pv : 초기값이 없으면 배열의 첫번째 값(element는 2번째 값 부터)
+                       초기값이 있으면 초기값이 들어감(element는 1번째 값 부터)
+                       ** 2번째 부터 pv값은 이전 실행의 결과값이 들어옴
+            }, 초기값);
+            */
+
+            const arr = [1,2,3,4,5,6,7,8,9,10];
+            const sum = arr.reduce(function(pv, ele, index, arr) {
+                return pv + ele;
+            }, 0);
+            area3.innerHTML = `1~10까지의 합 : ${sum}<br>`;
+
+            const nums = [4,8,2,9,5,0,1,3,6,7];
+            const max = nums.reduce(function(previous, current) {
+                return previous > current ? previous : current;
+            });
+            area3.innerHTML += `[${nums}]중 가장 큰 수는 : ${max}`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>* some : 각 요소별 콜백함수를 실행하여 조건이 하나라도 만족하면 true반환. 모두 만족하지 않을 때만 false반환</h3>
+
+    <div class="area" id="area4"></div>
+    <button onclick="someTest();">some</button>
+
+    <script>
+        function someTest() {
+            const area4 = document.querySelector('#area4');
+
+            const arr = [1,3,5,7,8,9];
+
+            const hasEven = arr.some(function(num) {
+                return num % 2 == 0;
+            });
+            area4.innerHTML = `[${arr}]에 짝수가 포함되어 있는가? ${hasEven}`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>* every : 배열의 모든 요소가 조건을 만족해야만 true, 하나라도 만족하지 않으면 false</h3>
+
+    <div class="area" id="area5"></div>
+    <button onclick="everyTest();">every</button>
+
+    <script>
+        function everyTest() {
+            const area5 = document.getElementById('area5');
+            const numbers = [2, 3, 5, 7, 11, 13, 17];  //소소 집합인지 판단
+
+            
+        }
+    </script>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
