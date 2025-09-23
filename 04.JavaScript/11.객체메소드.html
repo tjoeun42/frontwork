@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 메소드</title>
+    <style>
+        .area {
+            border: 1px solid;
+            padding: 5px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h3>* 객체 메소드 속성</h3>
+    <p>
+        객체의 속성중 함수 자료형인 속성을 메소드라고 부름
+    </p>
+
+    <div class="area" id="area1"></div>
+    <button onclick="test1()">실행확인</button>
+
+    <script>
+        function test1() {
+            const area1 = document.getElementById('area1');
+
+            let name = '이연희';
+            const dog = {
+                name : '누렁이',
+                kind : '똥개',
+                eat : function(food) {
+                    area1.innerHTML = `eat 메소드 호출됨<br>`;
+                    area1.innerHTML += `${food}<br>`;
+                    area1.innerHTML += `${this.kind}종류인 ${this.name}가 ${food}를 먹고 있어요<br><hr>`;
+                }
+            }
+            dog.eat('사료');
+
+            name = 'hong';
+            const age = 25;
+            // ES6 이전 버전
+            const user1 = {
+                name : name,
+                age : age,
+                fun1 : function() {
+                    const result = this.name.toUpperCase();
+                    area1.innerHTML += result + "!!!<br>";
+                },
+                setAge : function(pAge) {
+                    this.age = pAge;
+                    area1.innerHTML += `나이 : ${this.age}<br><hr>`;
+                }
+            }
+            user1.fun1();
+            user1.setAge(10);
+
+            // ES6 버전 이후
+            let user2 = {
+                name,
+                age,
+                fun1() {
+                   const result = this.name.toUpperCase();
+                   area1.innerHTML += result + "!!!<br>"; 
+                },
+                setAge(pAge) {
+                   this.age = pAge;
+                   area1.innerHTML += `나이 : ${this.age}<br>`;
+                }
+            }
+            user2.fun1();
+            user2.setAge(10);
+        }
+    </script>
+
+    <h3>* in과 with키워드</h3>
+    <p>
+        - in : 객체 내에 해당 속성이 있는지 확인해주는 키워드(존재하면 true, 없으면 false)<br>
+        - with : 객체의 속성 접근시 객체명을 생략할 수 있음(코드를 줄여주는 키워드)
+    </p>
+    이름 : <input id="name"><br>
+    국어 : <input type="number" id="kor"><br>
+    수학 : <input type="number" id="math"><br>
+    영어 : <input type="number" id="eng"><br> 
+    <button onclick="test2()">실행확인</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        function test2() {
+            const student = {
+                name : document.getElementById('name').value,
+                kor : Number(document.getElementById('kor').value),
+                math : Number(document.getElementById('math').value),
+                eng : Number(document.getElementById('eng').value),
+                getSum : function() {
+                    return this.kor + this.math + this.eng; 
+                },
+                getAvg : function() {
+                    // return Math.round((this.getSum()/3)*10)/10;
+                    return (this.getSum()/3).toFixed(1);  // 소수1째자리로 고정
+                },
+                toString : function() {
+                    return '안녕';
+                }
+            }
+            
+            const area2 = ``;
+            
+        }
+    </script>
+
+
+</body>
+</html>
