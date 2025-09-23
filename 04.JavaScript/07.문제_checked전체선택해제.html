@@ -88,9 +88,14 @@
             //     checkbox.checked = shouldCheck;
             // }
 
-            checkboxes.forEach(function(checkbox) {
+            // checkboxes.forEach(function(checkbox) {
+            //     checkbox.checked = shouldCheck;
+            // });
+
+            checkboxes.forEach(checkbox => {
                 checkbox.checked = shouldCheck;
             });
+
         }
 
         function updateSelectAll() {
@@ -98,9 +103,12 @@
             const selectAll = document.querySelector('#selectAll');
 
             // Array.from(allOptions) : 배열로 변환 
-            const allChecked = Array.from(allOptions).every(function(option) {
-                return option.checked;
-            });
+            // const allChecked = Array.from(allOptions).every(function(option) {
+            //     return option.checked;
+            // });
+
+            const allChecked = Array.from(allOptions).every(option => option.checked);
+
             selectAll.checked = allChecked;
 
             /*

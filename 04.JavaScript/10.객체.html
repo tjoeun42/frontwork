@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+    <style>
+        .area {
+            border: 1px solid;
+            padding: 5px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+    <h3>* 객체의 선언 및 사용</h3>
+    <p>
+        - 객체는 중괄호{}를 사용하여 생성하고,<br>
+          &ensp; 중괄호 안에 이 객체에 필요한 속성을 정의함.<br>
+        - 속성명.속성값의 형태로 정의(key:value)<br>
+          &ensp; 속성값으로는 모든 자료형의 값을 담을 수 있다.
+    </p>
+    <pre>
+    변수 = {
+        속성명:속성값,
+        속성명:속성값,
+        속성명:속성값,
+        ...
+    }
+    </pre>
+
+    <div class="area" id="area1"></div>
+    <button onclick="test1()">실행확인</button>
+
+    <script>
+        function test1() {
+            // 배열 == 자바의 컬렉션(ArrayList)
+            const arr = ['Mango', 25000, 'fruit', ['Lime', 'Peach', 'berry']];
+
+            // 객체 == 자바의 컬렉션(HashMap)
+            const product = {
+                pName : 'Mango',
+                price : 25000,
+                'kind' : 'fruit',
+                fruitKind : ['Lime', 'Peach', 'berry']
+            }
+
+            console.log(product);
+            console.log(typeof(product));
+
+            let area1 = document.getElementById('area1');
+            area1.innerHTML = `product : ${product}<br><br>`;
+
+            // 객체의 속성 접근하는 방법
+            // 방법1. 대괄호를 이용하는 방법 : 객체명["속성명"] -> 반드시 속성명은 문자열로
+            area1.innerHTML += `<b>- 객체명['속성명']으로 접근하기</b><br>`;
+            area1.innerHTML += `pName : ${product['pName']}<br>`;
+        }
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
