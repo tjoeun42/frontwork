@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 객체</title>
+</head>
+<body>
+    <h1>window 객체</h1>
+    <p>
+        window 객체는 자바스크립트의 최상위 객체이며 크게 BOM과 DOM으로 나뉨<br>
+        - BOM(Browser Object Model) : location, screen, navigator, history<br>
+        - DOM(Document Object model) : document
+    </p>
+
+    <h3>- [window.]open('url', '창이름', '창의특성')</h3>
+
+    <button onclick="test1()">네이버</button>
+
+    <script>
+        function test1() {
+            /*
+            window.open(url, 창이름, 창의특성)
+            - url : 새창에서 열고자하는 url주소
+            - 창이름 : 새로운 창의 이름. 창이름이 같은것이 이미 열려있다면 열려있는 곳에 새로고침
+            - 창의특성 : 새창의 너비, 높이, 주소창여부, 툴바여부, 스크롤바여부 등등 창의 특성
+                        ** 창의 특성을 넣지 않으면 새탭에 열림. 특성을 넣으면 새창에 열림
+            */
+            // window.open('https://naver.com', '네이버');
+
+            /*
+            * 창의 특성
+              => px
+              width : 창의 너비
+              height : 창의 높이
+
+              => yes | no
+              resizable : 창의 크기 조절 가능 여부
+              location : 주소창
+              menubar : 메뉴바
+              scrollbars : 스크롤바
+              status : 상태표시줄  
+            */
+            window.open('https://naver.com','naver', 'width=700, height=500, scrollbars=no') 
+        }
+    </script>
+</body>
+</html>
