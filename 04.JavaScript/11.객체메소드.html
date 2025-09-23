@@ -92,6 +92,17 @@
                 kor : Number(document.getElementById('kor').value),
                 math : Number(document.getElementById('math').value),
                 eng : Number(document.getElementById('eng').value),
+                getSum() {
+                    return this.kor + this.math + this.eng;
+                },
+                getAvg() {
+                    return (this.getSum()/3).toFixed(1);
+                },
+                toString() {
+                    return `${this.name} : ${this.kor}, ${this.math}, ${this.eng}`;
+                }
+
+                /*
                 getSum : function() {
                     return this.kor + this.math + this.eng; 
                 },
@@ -100,15 +111,36 @@
                     return (this.getSum()/3).toFixed(1);  // 소수1째자리로 고정
                 },
                 toString : function() {
-                    return '안녕';
+                    return `${this.name} : ${this.kor}, ${this.math}, ${this.eng}`;
                 }
+                */
             }
             
-            const area2 = ``;
-            
+            const area2 = document.getElementById('area2'); 
+            area2.innerHTML = `student : ${student}<br>`;
+
+            // in : 객체에 해당 속성 있는지 확인
+            area2.innerHTML += `name속성이 있는가? ${'name' in student}<br>`;
+            area2.innerHTML += `age속성이 있는가? ${'age' in student}<br><hr>`;
+
+            area2.innerHTML += `학생이름 : ${student.name}<br>`;
+            area2.innerHTML += `국어점수 : ${student.kor}<br>`;
+            area2.innerHTML += `수학점수 : ${student.math}<br>`;
+            area2.innerHTML += `영어점수 : ${student.eng}<br>`;
+
+            area2.innerHTML += `총점 : ${student.getSum()}<br>`;
+            area2.innerHTML += `평균 : ${student.getAvg()}<br><hr>`;
+
+            with(student) {
+                area2.innerHTML += `학생이름 : ${name}<br>`;
+                area2.innerHTML += `국어점수 : ${kor}<br>`;
+                area2.innerHTML += `수학점수 : ${math}<br>`;
+                area2.innerHTML += `영어점수 : ${eng}<br>`;
+
+                area2.innerHTML += `총점 : ${getSum()}<br>`;
+                area2.innerHTML += `평균 : ${getAvg()}<br>`;
+            }
         }
     </script>
-
-
 </body>
 </html>
