@@ -89,6 +89,7 @@
     <button id="btn4">이벤트 속성에 핸들러 바인딩</button>
     <button id="btn5">addEventListener 방식</button>
     <button onclick="test2();">인라인이벤트 방식</button>
+    <button onclick="test3(this);">인라인이벤트 방식2</button>
 
     <script>
         document.getElementById('btn4').onclick = function(e) {
@@ -117,8 +118,59 @@
         - 혹은 함수를 호출할 때 this를 인자로 넣어서 요소 객체를 전달해주면 됨
         */
         function test2() {
-            console.log(e.target);
+            // console.log(e.target);  함수를 호출하면서 인자를 전달하지 않았음
+            console.log(window.event.target);
 
+            window.event.target.innerHTML = '버튼 변경';
+        }
+
+        function test3(eleObj) {
+            console.log(eleObj);
+
+            eleObj.style.color = 'red';
+        }
+    </script>
+
+    <hr>
+
+    <h1>태그별 기본적으로 가지고 있는 이벤트 제거</h1>
+
+    <h3>* 기본적으로 이벤트를 가지고 있는 요소</h3>
+    <p>
+        - a태그 : 클릭시 href의 속성값이 있는 url요청하는 기본 이벤트 보유<br>
+        - submit버튼 : 클릭시 form에 들어있는 모든 값들을 서버로 전송<br><br>
+
+        기본 이벤트 제거<br>
+        => 이벤트 핸들어의 return값을 false로 하면 기본이벤트 실행 안됨
+    </p>
+    <!-- 기본 이벤트는 다른 이벤트보다 우선순위가 낮다 -->
+    <a href="https://naver.com" onclick="alert('이벤트 작성')">네이버로 이동</a><br>
+    <a href="https://naver.com" onclick="alert('이벤트 작성'); return false;">네이버로 이동</a><br>
+    <a href="https://google.com" onclick="return test4();">구글로 이동</a><br>
+    <script>
+        function test4() {
+            alert('알림창');
+            return false;
+        }
+    </script>
+
+    <br><br>
+
+    <form action="test.do">
+        아이디 : <input name="userId" id="userId"><br>
+        비밀번호 : <input type="password" name="userPw" id="userPw"><br>
+        비밀번호확인 : <input type="password" id="checkPw"><br>
+        <input type="submit" onclick="return test5();">
+    </form>
+    <script>
+        function test5() {
+            const userPw = document.getElementById('userPw').value;
+            const checkPw = document.getElementById('checkPw').value;
+
+            if(userPw != checkPw) {
+                alert('비밀번호가 일치하지 않습니다');
+                return false;
+            }
         }
     </script>
 </body>

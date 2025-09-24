@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규 표현식</title>
+    <style>
+        .area {
+            border: 1px solid;
+            padding: 5px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>정규 표현식</h1>
+
+    <h3>* 정규표현식 객체 및 정규표현식과 관련된 메소드</h3>
+
+    <div class="area" id="area1"></div>
+    <button onclick="test1()">실행확인</button>
+
+    <script>
+        function test1() {
+            const area1 = document.getElementById('area1');
+            const str1 = 'javascript jquery ajax';
+            const str2 = 'java oracle html css';
+
+            // 정규표현식 객체 생성 == 정규식변수를 선언
+            //  -> 검색 조건으로 삼고자하는 문자열 또는 특정패턴 만들어 줌
+            let regExp = new RegExp('script');    // 방법1.
+            let regExp2 = /script/;               // 방법2.
+
+            /*
+                * RegExp 객체에서 제공하는 메서드(정규식.xxx(문자열))
+                  - 정규식.test(문자열) : 문자열에서 정규식값과 일치하는 값이 있으면 true
+                  - 정규식.exec(문자열) : 문자열에서 정규식값과 일치하는 값이 있으면 처음매칭된 문자열 반환, 없으면 null
+
+                * String 객체에서 제공하는 메서드(문자열.xxx(정규식))
+                  - 문자열.match(정규식) : 문자열에서 정규식값과 일치하는 값을 찾아서 반환
+                  - 문자열.search(정규식) : 문자열에서 정규식값과 일치하는 값의 시작인덱스 반환, 없으면 -1
+                  - 문자열.replace(정규식, 바꿀값) : 문자열에서 정규식값과 일치하는 첫번째 값을 바꿀값으로 변경하여 반환
+                  - 문자열.split(정규식) : 정규식에 지정된 값을 구분자로 해서 쪼개진 값들이 담겨있는 배열 반환
+            */
+
+            area1.innerHTML = `str1 : ${str1}<br>`;
+            area1.innerHTML += `str2 : ${str2}<br>`;
+            area1.innerHTML += `regExp : ${regExp}<br><hr>`;
+
+            area1.innerHTML += `regExp.test(str1) : ${regExp.test(str1)}<br>`;
+            area1.innerHTML += `regExp.test(str2) : ${regExp.test(str2)}<br>`;
+            area1.innerHTML += `regExp.exec(str1) : ${regExp.exec(str1)}<br>`;
+            area1.innerHTML += `regExp.exec(str2) : ${regExp.exec(str2)}<br><hr>`;
+
+            area1.innerHTML += `str1.match(regExp) : ${str1.match(regExp)}<br>`;
+            area1.innerHTML += `str2.match(regExp) : ${str2.match(regExp)}<br>`;
+            area1.innerHTML += `str1.search(regExp) : ${str1.search(regExp)}<br>`;
+            area1.innerHTML += `str2.search(regExp) : ${str2.search(regExp)}<br><hr>`;
+
+            area1.innerHTML += `str1.replace(regExp, '스크립트') : ${str1.replace(regExp, '스크립트')}<br>`;
+            area1.innerHTML += `str1.split(regExp) : ${str1.split(regExp)}<br>`;
+
+            regExp = / /;
+            area1.innerHTML += `str1.split(regExp) : ${str1.split(regExp)}<br>`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 메타문자</h3>
+    <p>
+        메타문자를 이용하여 정규식으로 검색조건에 맞는 "특정패턴"을 만듬<br>
+        문자열이 해당 정규식으로 만든 특정패턴에 만족하는지 메서드를 통해 검사
+    </p>
+
+    <div class="area" id="area2"></div>
+    <button onclick="test2()">실행확인</button>
+
+    <script>
+        function test2() {
+            const area2 = document.getElementById('area2');
+            const str = 'javascript jquery ajax';
+
+            let regExp = /a/;
+            area2.innerHTML = `str : ${str}<br>`;
+            area2.innerHTML += `/a/ : ${regExp.test(str)}<br>`;
+            // 일치하는 값 중 첫번째 값만 변환
+            area2.innerHTML += `/a/를 (***)로 변환 : ${str.replace(regExp, '(***)')}<br><hr>`;
+
+            // 1. ^ : 시작의미
+            regExp = /^j/;
+            area2.innerHTML += `/^j/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/^j/를 (***)로 변환 : ${str.replace(regExp, '(***)')}<br><hr>`;
+
+            regExp = /^a/;
+            area2.innerHTML += `/^a/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/^a/를 (***)로 변환 : ${str.replace(regExp, '(***)')}<br><hr>`;
+
+            // 2. [] : []내에 여러문자들을 목록처럼 나열 가능
+            regExp = /[abc]/;  // a 또는 b 또는 c 중 처음나오는 문자 변환
+            area2.innerHTML += `/[abc]/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/[abc]/를 (***)로 변환 : ${str.replace(regExp, '(***)')}<br><hr>`; 
+
+            regExp = /^[jsa]/;  // 시작값이 j또는 s또는 a이면 true
+            area2.innerHTML += `/^[jsa]/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/^[jsa]/ : ${str.replace(regExp, '(***)')}<br><hr>`;
+
+            // 3. $ : 끝을 의미
+            regExp = /x$/;
+            area2.innerHTML += `/x$/ : ${regExp.test(str)}<br>`;
+            area2.innerHTML += `/x$/를 (***)로 변환 : ${str.replace(regExp, '(***)')}<br><hr>`;
+
+            // 시작은 j로 시작하고 끝은 x로 끝나는지
+            regExp = /^jx$/;  // jx -> 만 true
+            area2.innerHTML += `/^jx$/ : ${regExp.test(str)}<br>`;  // flase
+
+            // 4. 점(.) : 개행문자를 제외한 모든 문자(영문자, 숫자, 한글, 특수문자)
+            // 5. + : 한글자 이상
+            //     .+ :   개행문자를 제외한 모든 문자가 한글자 이상 들어오면 됨
+            regExp = /^j.+x$/;
+            area2.innerHTML += `/^j.+x$/ : ${regExp.test(str)}<br><hr>`;
+
+            // 시작부터 끝까지 숫자로만 이루어져야 한다
+            regExp = /^[0-9]+$/;
+            area2.innerHTML += `/^[0-9]+$/ : ${regExp.test('2839382730')}<br>`;
+            area2.innerHTML += `/^[0-9]+$/ : ${regExp.test('2kiw*234')}<hr>`;
+
+            // 시작부터 끝까지 영문자(대,소문자)로만 이루어져야 한다
+            regExp = /^[a-zA-Z]+$/;
+            area2.innerHTML += `/^[a-zA-Z]+$/ : ${regExp.test('kdilwWdkDFE')}<br>`;
+            area2.innerHTML += `/^[a-zA-Z]+$/ : ${regExp.test('dkiSER8s98$#한글kdi')}<hr>`;
+            
+            // 시작부터 끝까지 한글로만 이루어져야 한다
+            regExp = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
+            area2.innerHTML += `/^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/ : ${regExp.test('ㅋㅋㅠㅠ더조은')}<br>`;
+            area2.innerHTML += `/^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/ : ${regExp.test('더조은45sdf*&^')}<br>`;
+            
+            regExp = /^[가-힣]+$/;
+            area2.innerHTML += `/^[가-힣]+$/ : ${regExp.test('ㅋㅋㅠㅠ더조은')}<br>`;
+            area2.innerHTML += `/^[가-힣]+$/ : ${regExp.test('더조은')}<br>`;
+        }
+    </script>
+</body>
+</html>
