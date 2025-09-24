@@ -138,6 +138,137 @@
             regExp = /^[가-힣]+$/;
             area2.innerHTML += `/^[가-힣]+$/ : ${regExp.test('ㅋㅋㅠㅠ더조은')}<br>`;
             area2.innerHTML += `/^[가-힣]+$/ : ${regExp.test('더조은')}<br>`;
+
+            regExp = /^[가-힣]{2,}$/;
+            const name = prompt('이름 입력');
+            if(regExp.test(name)) {
+                alert('반갑습니다');
+            } else {
+                alert('유효한 형식의 이름을 넣으세요');
+            }
+        }
+    </script>
+
+    <h3>* 플래그 문자</h3>
+    <p>
+        i : 대소문자를 가리지 않고 비교를 수행<br>
+        g : 전역으로 비교를 수행<br>
+        m : 여러줄 비교를 수행
+    </p>
+
+    <button onclick="test3();">/i 실행확인</button>
+    <script>
+        function test3() {
+            // 영문자(대소문자)시작하고 숫자와 영문으로만 이뤄어져야 됨
+            let regExp = /^[a-zA-Z][0-9a-zA-Z]+$/;
+            regExp = /^[a-z][0-9a-z]+$/i;
+
+            const value = prompt('입력');
+            if(regExp.test(value)) {
+                alert('유효한 입력값입니다');
+            } else {
+                alert('유효한 형식이 아닙니다');
+            }
+        }
+    </script>
+
+    <div class="area" id="area3"></div>
+    <button onclick="test4();">/g 실행확인</button>
+    <script>
+        function test4() {
+            const area3 = document.getElementById('area3');
+            const str = 'javaScript jQuery Ajax';
+
+            let regExp = /a/;
+            area3.innerHTML += `/a/ : ${str.replace(regExp, '(***)')}<br>`;
+
+            regExp = /a/g;
+            area3.innerHTML += `/a/g : ${str.replace(regExp, '(***)')}<br>`;
+
+            regExp = /a/ig;
+            area3.innerHTML += `/a/ig : ${str.replace(regExp, '(***)')}<br>`;
+        }
+    </script>
+
+    <div class="area" id="area4"></div>
+    <button onclick="test5();">/m 실행확인</button>
+
+    <script>
+        function test5() {
+            const area4 = document.getElementById('area4');
+            const str = 'javaScript\njQuery\nAjax';
+            console.log(str);
+
+            regExp = /^j/;
+            area4.innerHTML += `/^j/ : ${str.replace(regExp, '(***)')}<br>`;
+
+            regExp = /^j/g;
+            area4.innerHTML += `/^j/g : ${str.replace(regExp, '(***)')}<br>`;
+
+            regExp = /^j/gm;
+            area4.innerHTML += `/^j/gm : ${str.replace(regExp, '(***)')}<br>`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 정규표현식으로 주민번호 확인</h3>
+    주민번호 : <input id="pno" placeholder="123456-1234567"><br>
+    <button onclick="test6()">확인</button>
+
+    <script>
+        function test6() {
+            const value = document.getElementById('pno').value;
+
+            // 1단계 : 글자수만 확인
+            /*
+            const regExp = /^......-.......$/;
+            if(regExp.test(value)) {
+                alert('정상입력');
+            } else {
+                alert('잘못 입력');
+            }
+            */
+            // 2단계 : 숫자6개-[1-4]숫자7개
+            /*
+                .  : 개행문자를 제외한 모든문자 1글자
+                \d : 숫자만
+                \D : 숫자제외한 모든 문자
+
+                \w : 영문자, 숫자, _(언더바)
+                \W : 영문자, 숫자, _(언더바)를 제외한 모든 문자
+
+                \s : 공백문자(띄어쓰기, 탭, 줄바꿈)
+                \S : 공백문자(띄어쓰기, 탭, 줄바꿈)를 제외한 모든 문자
+
+                <수량 문자>
+                + : 1글자 이상
+                * : 0글자 이상
+                ? : 0글자 또는 1글자
+
+                {5} : 5글자
+                {2,5} : 2~5글자
+                {2,} : 2글자 이상
+                {,5} : 0~5글자
+            */
+
+            /*
+            //   /^\d\d\d\d\d\d-[1-4]\d\d\d\d\d\d$/;
+
+            const regExp = /^\d{6}-[1-4]\d{6}$/;
+            if(regExp.test(value)) {
+                alert('정상입력');
+            } else {
+                alert('잘못 입력');
+            }
+            */
+           
+            const regExp = /^\d{2}(0[1~9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])-[1-4]\d{6}$/;
+            if(regExp.test(value)) {
+                alert('정상입력');
+            } else {
+                alert('잘못 입력');
+            }
         }
     </script>
 </body>
