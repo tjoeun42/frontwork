@@ -8,5 +8,105 @@
 </head>
 <body>
     <h1>기본선택자를 이용한 요소 선택</h1>
+
+    <h3>* 아이디 선택자</h3>
+    <p>특정 고유한 아이디값을 가진 요소 "하나만"을 선택하고자 할 때</p>
+
+    <h4 id="id1">id 테스트</h4>
+
+    <script>
+        $(() => {           
+            // 자바스크립트 방식
+            /*
+            document.getElementById('id1').style.color = 'red';
+            document.getElementById('id1').innerHTML = '자바스크립트로 글자 변경';
+            */
+
+            // jQuery 방식 => $('#아이디명')
+            //  .css() : 스타일에 관련된 기능을 수행하는 메소드
+            //  .html() : 선택된 요소의 innerHTML과 관련된 기능을 수행하는 메소드
+            $('#id1').css('color', 'green');
+            $('#id1').html('jQuery로 글자 변경');
+
+            // console.log(document.getElementById('id1'));
+            console.log($('#id1'));
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 태그 선택자</h3>
+
+    <h5>CSS</h5>
+    <h5>javaScript</h5>
+    <h5>jQuery</h5>
+
+    <script>
+        $(() => {
+            // 자바스트립트 방식
+            /*
+            console.log(document.getElementsByTagName('h5'));
+
+            const h5 = document.getElementsByTagName('h5');
+            for(let i in h5) {
+                h5[i].style.color = 'hotpink';
+            }
+            */
+
+            // jQuery 방식 => $('태그명')
+            console.log($('h5'));
+            $('h5').css('color','blue');
+
+            // 여러종류의 요소들 선택
+            // $('p, h5, #id1').css('backgroundColor', 'yellow');
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 클래스 선택자</h3>
+    <p>특정한 클래스 속성을 가진 요소들을 선택하고자 할 때</p>
+
+    <h4 class="item">class1</h4>
+    <h4 class="item select">class2</h4>
+    <h4 class="item select">class3</h4>
+
+    <script>
+        $(() => {
+            // 자바스크립트 방식
+            const items = document.getElementsByClassName('item');
+            for(let i=0; i<items.length; i++) {
+                items[i].style.color = 'orange';
+                items[i].onclick = function() {
+                    console.log('클릭됨');
+                }
+            }
+
+            // jQuery 방식 => $('.클래스명')
+            //   .click() : 클릭이벤트와 관련된 기능을 수행하는 메소드
+            $('.select').css('backgroundColor', 'lightgray');
+            $('.select').click(function() {
+                alert('클릭됨');
+            })
+            // $('.select').click(() => alert('클릭됨'));
+        })
+    </script>
+    <!--
+    * 요소 선택 방법
+                    자바스크립트 방식                    |     jQuery 방식
+    =============================================================================
+           document.getElementById('아이디명')          |   $('#아이디명')
+        document.getElementsByClassName('클래스명')     |   $('.클래스명')
+        document.getElementsByTagName('태그명')         |   $('태그명') 
+
+    * 선택된 요소에 속성값을 변경하고자 할 때
+                    자바스크립트 방식                     |     jQuery 방식
+    -----------------------------------------------------------------------------
+            선택된 요소객체에 직접 속성에 접근하여 사용       |  선택된 요소에 메소드 사용
+    =============================================================================
+    스타일  |   .style.스타일속성 = '변경할 값';            | .css('스타일속성', '변경할값')
+    내용    |   .innerHTML = '변경할 값';                 | .html('변경할 값')
+    이벤트  |   .on이벤트명 = function() {}               | .이벤트명(function() {})                                
+    -->
 </body>
 </html>
