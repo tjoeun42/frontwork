@@ -1,0 +1,8 @@
+* {margin: 0 auto;}
+h1 {text-align: center; margin: 20px 0;}
+form {width: 700px; border: 1px solid;}
+input {width: 200px;}
+td {height: 40px;}
+.text {padding-left: 15px;}
+select {width: 100px;}
+.btn {width: 100px; height: 30px;}
