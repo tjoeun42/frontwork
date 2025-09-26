@@ -9,6 +9,22 @@
         .added {
             color:cadetblue ;
         }
+        .item {
+            background-color: cornflowerblue;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            margin: 5px;
+        }
+        .item span {
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+        .purple {
+           background-color:  purple;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +105,97 @@
         })
     </script>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <hr>
+
+    <h3>* 요소객체 복제 메소드</h3>
+    <p>
+        $('선택자').clone([true|false]) : 선택된 요소를 복제하여 반환해주는 메소드<br>
+          > true|false : 복제할 요소에 걸려있는 이벤트까지 복사할 것인지 지정(기본값 false)
+    </p>
+
+    <div id="cloneTest">
+        <!-- 복제할 요소 -->
+        <div id="item1" class="item">
+            <span>안녕</span>
+        </div>
+    </div>
+
+    <button id="clone">복제</button>
+    <div id="cloneResult"></div>
+
+    <script>
+        $(() => {
+            $('.item').hover(function() {
+                $(this).addClass('purple');
+            }, function() {
+                $(this).removeClass('purple');
+            })
+
+            $('#clone').click(function() {
+                const copy = $('#item1').clone();
+                const copy2 = $('#item1').clone(true);
+
+                $('#cloneResult').append(copy2);
+            })
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 요소 객체 제거 및 자라내기 메소드</h3>
+    <p>
+        $('선택자').empty() : 선택된 요소의 하위요소들을 제거해주는 메소드<br><br>
+
+        변수 = $('선택자').remove()|detach() : 선택된 요소를 잘라내기하여 그 요소를 반환해주는 메소드<br><br>
+            -> remove() : 잘라내기시 잘라낸 요소의 이벤트 안가져옴<br>
+            -> detach() : 잘라내기시 잘라낸 요소의 이벤트까지 가져옴
+    </p>
+
+    <div id="removeTest">
+        <!-- 제거할 요소 -->
+        <div id="item2" class="item">           
+            <span>안녕</span>
+        </div>
+    </div>
+
+    <button id="empty">제거</button>
+    <button id="remove">잘라내기(remove)</button>
+    <button id="detach">잘라내기(detach)</button>
+
+    <div id="removeResult"></div>
+
+    <script>
+        $('#empty').click(function() {
+            $('#item2').empty();
+        })
+
+        $('#remove').click(function() {
+            let el = $('#item2').remove();
+            $('#removeResult').append(el);
+        })
+
+        $('#detach').click(function() {
+            let el = $('#item2').detach();
+            $('#removeResult').append(el);
+        })
+    </script>
+    <!--
+    요소.css('스타일속성','값') : 변경
+    요소.css('스타일속성') : 값 반환
+
+    요소.val('텍스트') : value속성 값 변경
+    요소.val() : value속성 값 반환
+
+    요소.html|text('텍스트') : 요소변경
+    요소.html|text() : 요소반환
+
+    요소.addClass('클래스명') : 클래스 속성 삽입
+    요소.removeClass('클래스명') : 클래스 속성 제거
+
+    요소.attr('그외속성명', '값') : 속성 변경
+    요소.attr('그외속성명') : 속성 반환
+
+    요소.이벤트명(function() {}) : 이벤트가 발생되면 함수 실행
+    -->
 </body>
 </html>
