@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Content 관련 메소드</title>
+    <style>
+        .wrap, .wrap * {
+            border: 1px solid lightgray;
+            display: block;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Content 관련 메소드</h1>
+    <h3>* html(['문구']) 메소드 : innerHTML 속성과 관련된 메소드</h3>
+
+    <p>
+        선택된 요소의 content 영역의 값을 리턴해주거나 또는 변경해주는 메소드<br>
+        > $('선택자').html() : 선택된 요소의 content영역 값을 반환해 줌(html태그도 포함)
+        > $('선택자').html('문구') : 선택된 요소의 content영역 값을 해당 문구로 변경해 줌(html태그가 있는 경우 태그로 인식함)
+    </p>
+
+    <h4 id="test1"><a>네이버로</a></h4>
+
+    <h4 id="test2">
+        <a href="https//naver.com">네이버로</a>
+    </h4>
+
+    <script>
+        $(() => {
+            const tmp = $('#test1').html();
+            console.log(tmp);
+
+            // $('#test2').html(tmp);
+
+            $('#test2').html($('#test1').html());
+
+        })
+    </script>
+</body>
+</html>
