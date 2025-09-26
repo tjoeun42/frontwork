@@ -35,7 +35,7 @@
     <div id="area1"></div>
 
     <script>
-        $('#btn').click(function() {
+        $('#btn').click(() => {
             // javascript에서
             let el1 = '<p>Create Element By Text</p>';
 
@@ -165,16 +165,14 @@
     <div id="removeResult"></div>
 
     <script>
-        $('#empty').click(function() {
-            $('#item2').empty();
-        })
+        $('#empty').click(() => $('#item2').empty());
 
-        $('#remove').click(function() {
+        $('#remove').click(() => {
             let el = $('#item2').remove();
             $('#removeResult').append(el);
         })
 
-        $('#detach').click(function() {
+        $('#detach').click(() => {
             let el = $('#item2').detach();
             $('#removeResult').append(el);
         })
