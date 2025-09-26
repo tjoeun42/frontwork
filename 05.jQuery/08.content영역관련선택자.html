@@ -20,25 +20,73 @@
 
     <p>
         선택된 요소의 content 영역의 값을 리턴해주거나 또는 변경해주는 메소드<br>
-        > $('선택자').html() : 선택된 요소의 content영역 값을 반환해 줌(html태그도 포함)
+        > $('선택자').html() : 선택된 요소의 content영역 값을 반환해 줌(html태그도 포함)<br>
         > $('선택자').html('문구') : 선택된 요소의 content영역 값을 해당 문구로 변경해 줌(html태그가 있는 경우 태그로 인식함)
     </p>
 
     <h4 id="test1"><a>네이버로</a></h4>
 
-    <h4 id="test2">
-        <a href="https//naver.com">네이버로</a>
-    </h4>
+    <h4 id="test2"></h4>
 
     <script>
         $(() => {
             const tmp = $('#test1').html();
-            console.log(tmp);
+            console.log(tmp);       // <a>네이버로</a> : 태그와 글씨
 
             // $('#test2').html(tmp);
 
             $('#test2').html($('#test1').html());
 
+            $('#test2').children().attr('href','https://naver.com');
+        })
+    </script>
+
+    <h3>* text(['문구']) 메소드 : innerText속성과 관련된 메소드</h3>
+    <p>
+        선택된 요소의 content영역의 값을 리턴해주거나 또는 변경해주는 메소드<br>
+        > $('선택자').text() : 선택된 요소의 content영역 반환해줌(html태그는 포함안함, 텍스로만)<br>
+        > $('선택자').text('선택자') : 선택된 요소의 content영역을 전달한 값으로 변경해줌(html태그는 포함안함, 텍스로만)
+    </p>
+
+    <h4 id="test3"><a>구글로</a></h4>
+
+    <h4 id="test4"></h4>
+
+    <script>
+        $(() => {
+            const tmp = $('#test3').text();
+            console.log(tmp);  // 구글로 : 글씨만
+
+            $('#test4').text(`<a>${tmp}</a>`);
+        })
+    </script>
+
+    <hr>
+
+    <div class="test">테스트</div>
+    <div class="test">테스트</div>
+    <div class="test">테스트</div>
+
+    <script>
+        $(() => {
+            /*
+            $('.test').html('<h1>글씨변경함</h1>');
+
+            
+            선택된 요소들에 순차적으로 접근할 때마다 해당 function실행됨
+            이때 함수 실행시 리턴된 값으로 문구 변경
+            
+
+            let count = 0;
+            $('.test').html(function() {
+                return `<h1>글씨변경함${++count}</h1>`
+            })
+            */
+
+            $('.test').html(function(index, html) {
+                return `<h1>인덱스 : ${index}, content내용 : ${html}</h1>`;
+            })
+            // text() 도 동일
         })
     </script>
 </body>
