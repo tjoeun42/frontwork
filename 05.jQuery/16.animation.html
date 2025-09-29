@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>
+    <title>animation</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: relative;
+        }
+    </style>
+    <script>
+        $(() => {
+            $('button').click(function() {
+                let easing = $('select>option:selected').text();
+                $('div').animate({left: '400px'}, 2000, easing)
+                        .animate({left: 0}, 2000, easing);
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>애니메이션</h1>
+    <p>
+        Effect 외의 다른 애니메이션을 주고자 할 때<br>
+        크기를 변경, 글자를 변경, 움직이게 ...
+    </p>
+    <pre>
+    $('선택자').animate({주고자하는 애니메이션 : '애니메이션의 값'}, 시간, 효과)
+    </pre>
+
+    <select>
+        <option>linear</option>
+        <option>swing</option>
+        <option>easeInElastic</option>
+        <option>easeOutElastic</option>
+        <option>easeInOutElastic</option>
+        <option>easeInBack</option>
+        <option>easeOutBack</option>
+        <option>easeInOutBack</option>
+        <option>easeInBounce</option>
+        <option>easeOutBounce</option>
+        <option>easeInOutBounce</option>
+    </select>
+    <button>MOVE</button>
+    <div></div>   
+</body>
+</html>

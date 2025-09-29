@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>slideUp_slideDown</title>
+    <style>
+        div {
+            background-color: beige;
+            border: 1px solid yellow;
+            border-radius: 10px;
+            width: 300px;
+            height: 35px;
+            line-height: 35px;
+            padding-left: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        p {
+            width: 300px;
+            height: 50px;
+            padding: 10px 0 0 20px;
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>Q. 질문입니다</div>
+    <p>A. 질문에 대한 답입니다</p>
+
+    <div>Q. 수업시작시간은 몇시 입니까?</div>
+    <p>A. 오후 3시부터 입니다</p>
+
+    <div>Q. 수업종료시간은 몇시 입니까?</div>
+    <p>A. 오후 10시 20분 입니다</p>
+
+    <div>Q. 저녁식사시간은 언제 입니까?</div>
+    <p>A. 5시 50분 ~ 6시 30분까지 입니다</p>
+
+    <div>Q. 쉬는시간은 몇분입니까?</div>
+    <p>A. 10분 입니다</p>
+
+    <script>
+        $('div').click(function() {
+            console.log($(this))
+            console.log($(this).next()) //  => 이벤트가 발생한 바로 뒤의 형제 1개만 선택
+
+            const p = $(this).next();
+            if(p.css('display') === 'none') {
+                p.slideDown();
+            } else {
+                p.slideUp();
+            }
+        })
+    </script>
+</body>
+</html>

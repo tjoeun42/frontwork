@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script> -->
     <title>fadeIn_fadeOut</title>
     <style>
         #img1{
@@ -32,7 +31,16 @@
 
     <script>
         $('#fadeOut').click(function() {
-            $('#img1').fadeOut(2000);
+            $('#img1').fadeTo(2000, 0.2);  // 2번째 인수는 투명도
+            $('#content').fadeOut(2000);
+        })
+        $('#fadeIn').click(function() {
+            $('#img1').fadeTo(2000, 0.8);
+            $('#content').fadeIn(2000);
+        })
+        $('#fadeToggle').click(function() {
+            $('#img1').fadeToggle(2000);
+            $('#content').fadeToggle(2000);
         })
     </script>
 </body>
