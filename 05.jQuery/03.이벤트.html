@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>이벤트</title>
+</head>
+<body>
+    <h1>이벤트 핸들러(이벤트 발생시 실행될 function) 열결 하는 방법</h1>
+    <h3>* 방법1. 이벤트 메소드를 통한 연결</h3>
+    <pre>
+    $('선택자').이벤트메소드(function() {
+        실행할 내용;
+    })
+    </pre>
+
+    <h4 id="test1">클릭해보세요</h4>
+
+    <script>
+        $('#test1').click(function() {
+            $(this).html("클릭되었습니다");
+        })
+        $('#test1').dblclick(function() {
+            $(this).css('color', 'red');
+        })
+    </script>
+
+    <br>
+
+    <h3>* 방법2. on메소드를 이용한 방법</h3>
+    <pre>
+    $('선택자').on('이벤트명', function() {
+        실행할 내용
+    })
+    </pre>
+
+    <h4 id="test2">마우스를 올려보세요</h4>
+
+    <script>
+        $(() => {
+            $('#test2').on('mouseenter', function() {
+
+            })
+            $('#test2').on('mouseout', function() {
+
+            })
+
+            // $('#test2').on({key:값, key:값, ...})
+            $('#test2').on({mouseenter:function(){
+                            $(this).css('backgroundColor', 'yellowgreen')
+                                   .text('마우스 올라감') ;
+                        }, mouseout:function(){
+                            $(this).css('backgroundColor', 'yellow')
+                                   .text('마우스 빠져나감') ;
+                        }, click:function(){
+                            $(this).off('mouseenter')
+                                   .off('mouseout')
+                                   .css('backgroundColor', 'orange')
+                                   .text('이벤트 제거됨')
+                        }})
+        })
+    </script>
+
+    <br>
+
+    <h3>* 방법3. on메소드를 이용하여 하위요소에 이벤트 핸들러 작성</h3>
+    <pre>
+    $('상위선택자').on('이벤트명', '하위요소선택자(이벤트를 걸고자하는 요소)', function() {
+        실행할 내용
+    })
+    </pre>
+
+    <div id="wrap">
+        <h4>클릭해 보세요</h4>
+        <h5>클릭해 보세요</h5>
+    </div>
+
+    <h5>div 바깥쪽 h5</h5>
+
+    <script>
+        $('#wrap').on('click', 'h4, h5', function() {
+            $(this).html('클릭됨');
+        })
+        $(document).on('click', 'h5', function() {
+            $(this).css('color', 'pink');
+        })
+    </script>
+
+    <hr>
+
+    <h3>** 동적으로 만들어진 요소에도 동일한 이벤트를 적용시키고자 한다면 반드시 방법3으로 해야함</h3>
+
+    <div id="wrap2" style="border: 1px solid red;">
+        <h6>기존에 존재하는 h6요소</h6>
+    </div>
+
+    <script>
+        /*
+        // 방법1.  동적으로 만들어진 요소에는 이벤트 적용 안됨
+        $('#wrap2>h6').click(function() {
+            $('#wrap2').append('<h6>동적으로 만들어진 h6요소</h6>');
+        })
+        
+
+        // 방법2.  동적으로 만들어진 요소에는 이벤트 적용 안됨
+        $('#wrap2>h6').on('click', function() {
+            $('#wrap2').append('<h6>동적으로 만들어진 h6요소</h6>');
+        })
+        */
+
+        // 방법3.
+        $('#wrap2').on('click', 'h6', function() {
+            $('#wrap2').append('<h6>동적으로 만들어진 h6요소</h6>');
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 일회성 이벤트(one메소드)</h3>
+
+    <h6 id="test3">단 한번만 실행됨</h6>
+
+    <script>
+        $('#test3').one('click',function() {
+            alert('처음이자 마지막 이벤트 실행');
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 키보드 관련 이벤트</h3>
+    <p>
+        - keydown|keypress : 키가 눌렸을 때 발생하는 이벤트<br>
+          > keydown : 키보드의 모든키가 눌렸을 때 발생<br>
+          > keypress : 키보드의 펑션키, 기능키, 한글을 제외한 나머지키가 눌렸을 때 발생됨<br>
+        - keyup : 키가 눌렸다 올라올 때 발생하는 이벤트 
+    </p>
+
+    <input id="test4">
+
+    <script>
+        $('#test4').keyup(function() {
+            // console.log('눌렀음');
+            console.log($(this).val());
+            console.log($(this).val().length);
+        })
+    </script>
+
+    <br>
+<!-- 문제 -->
+
+    <h3>* 동적으로 글자수 세기</h3>
+
+    100자 이내로 작성하시오<br>
+    <textarea cols="30" rows="10" id="content"></textarea><br>
+    <span id="count"></span> / 100
+
+    <script>
+        $('#content').keyup(function() {
+            let textLength = $(this).val().length;
+            if(textLength <= 100) {
+                $('#count').text(textLength);
+            } else {
+                $(this).val($(this).val().substring(0, 100));
+                $('#count').text(100);
+            }
+        })
+    </script>
+</body>
+</html>

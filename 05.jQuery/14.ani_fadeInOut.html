@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script> -->
+    <title>fadeIn_fadeOut</title>
+    <style>
+        #img1{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h3>* fadeIn(), fadeOut(), fadeToggle()</h3>
+    <p>
+        선택된 요소가 점점 투명해지면서 사라지고, 불투명해지면서 나타나게 하는 메소드
+    </p>
+
+    <button id="fadeOut">숨기기</button>
+    <button id="fadeIn">보이기</button>
+    <button id="fadeToggle">토글</button>
+    <br><br>
+
+    <img id="img1" src="resources/img/img1.jpg">
+
+    <div id="content">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id deleniti consequuntur enim. Eaque deserunt rerum ut ipsam vero magni beatae numquam voluptate? Similique, enim reprehenderit aspernatur incidunt quasi ipsum quo!
+        Molestiae quisquam asperiores perspiciatis ex omnis dignissimos et, aut, impedit nisi, dicta quo. Reprehenderit quam obcaecati magnam enim officiis, voluptatibus ipsam voluptatum quisquam, eius illum minima deleniti quas, asperiores consectetur?
+    </div>
+
+    <script>
+        $('#fadeOut').click(function() {
+            $('#img1').fadeOut(2000);
+        })
+    </script>
+</body>
+</html>
